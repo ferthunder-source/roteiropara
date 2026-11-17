@@ -416,6 +416,9 @@
     grid-column:2;
     grid-template-columns:minmax(0,1fr);
     min-width:0;
+    width:fit-content;
+    max-width:100%;
+    justify-self:center;
     margin:0;
     padding:0;
     overflow:visible;
@@ -431,16 +434,21 @@
   .photo-thumb.is-active{
     display:block;
     grid-column:1;
-    height:min(60vh,520px);
+    justify-self:center;
+    width:fit-content;
+    max-width:100%;
+    height:auto;
     opacity:1;
     box-shadow:0 8px 22px rgba(31,111,84,.28);
   }
   .photo-thumb.is-active img{
-    width:100%;
-    height:100%;
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:min(60vh,520px);
     object-fit:contain;
     object-position:center;
-    background:#f1f5f9;
+    background:transparent;
   }
   .photo-preview{
     display:block;
@@ -517,10 +525,7 @@
   .food-item .photo-gallery{grid-column:1;}
   .food-item .photo-preview,
   .food-item .photo-carousel-control{display:none;}
-  .food-item .photo-thumb.is-active{
-    width:100%;
-    height:230px;
-  }
+  .food-item .photo-thumb.is-active img{max-height:230px;}
   .food-item .food-description > p:first-child{margin-top:0;}
   .food-curiosity{
     padding:16px;
@@ -534,7 +539,7 @@
       gap:8px;
     }
     .photo-gallery{padding:0;}
-    .photo-thumb.is-active{height:min(56vh,420px);}
+    .photo-thumb.is-active img{max-height:min(56vh,420px);}
     .photo-preview{max-width:110px;}
     .photo-carousel-prev{left:calc(15.1% + 2px);}
     .photo-carousel-next{right:calc(15.1% + 2px);}
@@ -724,7 +729,7 @@
     </article>
 
     <article class="place-section photo-section">
-    <h3 id="galeria-fotos">Aeroporto de Belém — Fotos</h3>
+    <h3 id="galeria-fotos">Aeroporto de Belém</h3>
     <h4 id="fotos-aeroporto">Galeria do Aeroporto de Belém</h4>
     <div class="photo-gallery" aria-label="Fotos do aeroporto de Belém">
       <button class="photo-thumb" type="button" data-photo="img/aeroporto1.png" data-caption="Aeroporto de Belém, Belém, Pará — 11/11/2026 — foto 1"><img src="img/aeroporto1.png" alt="Aeroporto de Belém, foto 1" loading="lazy"></button>
@@ -734,7 +739,7 @@
     </article>
 
     <article class="place-section photo-section">
-    <h3 id="fotos-point-acai">Point do Açaí — Fotos</h3>
+    <h3 id="fotos-point-acai">Point do Açaí</h3>
     <div class="photo-gallery" aria-label="Fotos do Point do Açaí">
       <button class="photo-thumb" type="button" data-photo="img/pa1.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 1"><img src="img/pa1.png" alt="Point do Açaí, foto 1" loading="lazy"></button>
       <button class="photo-thumb" type="button" data-photo="img/pa2.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 2"><img src="img/pa2.png" alt="Point do Açaí, foto 2" loading="lazy"></button>
@@ -765,7 +770,7 @@
     </article>
 
     <article class="place-section photo-section">
-    <h3 id="fotos-soure">Soure — Fotos</h3>
+    <h3 id="fotos-soure">Soure</h3>
     <div class="photo-gallery" aria-label="Fotos de Soure, Ilha de Marajó, Pará, de 11 a 14 de novembro">
       <button class="photo-thumb" type="button" data-photo="img/so1.png" data-caption="Soure — 12/11/2026 — foto 1"><img src="img/so1.png" alt="Soure, foto 1" loading="lazy"></button>
       <button class="photo-thumb" type="button" data-photo="img/so2.png" data-caption="Soure — 12/11/2026 — foto 2"><img src="img/so2.png" alt="Soure, foto 2" loading="lazy"></button>
@@ -792,7 +797,7 @@
     </article>
 
     <article class="place-section photo-section">
-    <h3 id="fotos-praia-barra-velha">Praia da Barra Velha — Fotos</h3>
+    <h3 id="fotos-praia-barra-velha">Praia da Barra Velha</h3>
     <div class="photo-gallery" aria-label="Fotos da Praia da Barra Velha em 12 de novembro">
       <button class="photo-thumb" type="button" data-photo="img/pbv1.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 1"><img src="img/pbv1.png" alt="Praia da Barra Velha, foto 1" loading="lazy"></button>
       <button class="photo-thumb" type="button" data-photo="img/pbv2.jpeg" data-caption="Praia da Barra Velha — 12/11/2026 — foto 2"><img src="img/pbv2.jpeg" alt="Praia da Barra Velha, foto 2" loading="lazy"></button>
@@ -830,7 +835,7 @@
     </article>
 
     <article class="place-section photo-section">
-    <h3 id="fotos-mangue-mata-fome">Mangue Mata Fome — Fotos</h3>
+    <h3 id="fotos-mangue-mata-fome">Mangue Mata Fome</h3>
     <div class="photo-gallery" aria-label="Fotos do Mangue Mata Fome, Soure, Ilha de Marajó, Pará">
       <button class="photo-thumb" type="button" data-photo="img/mg1.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 1"><img src="img/mg1.png" alt="Mangue Mata Fome, foto 1" loading="lazy"></button>
       <button class="photo-thumb" type="button" data-photo="img/mg2.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 2"><img src="img/mg2.png" alt="Mangue Mata Fome, foto 2" loading="lazy"></button>
@@ -1425,6 +1430,46 @@
   topButton.addEventListener("click", () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+  });
+
+  document.querySelectorAll(".photo-gallery").forEach(gallery => {
+    const existingPhotos = [...gallery.querySelectorAll(".photo-thumb")];
+    if (!existingPhotos.length) return;
+
+    const firstPhoto = existingPhotos[0];
+    const firstMatch = firstPhoto.dataset.photo.match(/^(.*?)(\d+)\.[^.]+$/);
+    if (!firstMatch) return;
+
+    const prefix = firstMatch[1];
+    const photosByNumber = new Map();
+    existingPhotos.forEach(photo => {
+      const match = photo.dataset.photo.match(/^(.*?)(\d+)\.[^.]+$/);
+      if (match && match[1] === prefix) {
+        photosByNumber.set(Number(match[2]), photo);
+      }
+    });
+
+    const captionBase = firstPhoto.dataset.caption.replace(/(?:,\s*| — )foto \d+$/i, "");
+    const altBase = firstPhoto.querySelector("img").alt.replace(/,\s*foto \d+$/i, "");
+    const orderedPhotos = [];
+    for (let number = 1; number <= 40; number++) {
+      let photo = photosByNumber.get(number);
+      if (!photo) {
+        const path = `${prefix}${number}.png`;
+        photo = document.createElement("button");
+        photo.type = "button";
+        photo.className = "photo-thumb";
+        photo.dataset.photo = path;
+        photo.dataset.caption = `${captionBase} — foto ${number}`;
+        const image = document.createElement("img");
+        image.src = path;
+        image.alt = `${altBase}, foto ${number}`;
+        image.loading = "lazy";
+        photo.appendChild(image);
+      }
+      orderedPhotos.push(photo);
+    }
+    orderedPhotos.forEach(photo => gallery.appendChild(photo));
   });
 
   let photoButtons = [...document.querySelectorAll(".photo-thumb")].sort((first, second) => {
