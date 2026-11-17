@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roteiro Belém — Guia Completo</title>
+<style>
+  :root{
+    --verde:#1f6f54;
+    --verde-claro:#e8f4ef;
+    --areia:#f7f3ea;
+    --texto:#222;
+    --destaque:#b5651d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--areia);
+    color:var(--texto);
+    line-height:1.6;
+  }
+  header{
+    background:linear-gradient(135deg, var(--verde), #2e8b6e);
+    color:#fff;
+    padding:32px 20px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  header h1{
+    margin:0;
+    font-size:2.2rem;
+    letter-spacing:1px;
+  }
+  header p{
+    margin:8px 0 0;
+    opacity:.95;
+  }
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:24px 18px 60px;
+  }
+  section{
+    background:#fff;
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:22px;
+    box-shadow:0 2px 6px rgba(0,0,0,.07);
+    border-left:6px solid var(--verde);
+  }
+  section.destaque{
+    border-left-color:var(--destaque);
+  }
+  h2{
+    color:var(--verde);
+    margin-top:0;
+    font-size:1.35rem;
+    border-bottom:2px solid var(--verde-claro);
+    padding-bottom:6px;
+  }
+  h3{
+    color:var(--destaque);
+    margin:18px 0 8px;
+    font-size:1.1rem;
+  }
+  h4{
+    margin:14px 0 6px;
+    color:var(--verde);
+    font-size:1rem;
+  }
+  ul{
+    margin:8px 0 8px 20px;
+    padding:0;
+  }
+  li{
+    margin-bottom:6px;
+  }
+  .tag{
+    display:inline-block;
+    background:var(--verde-claro);
+    color:var(--verde);
+    padding:2px 10px;
+    border-radius:20px;
+    font-size:.85rem;
+    font-weight:600;
+    margin-right:6px;
+  }
+  .info-box{
+    background:var(--verde-claro);
+    border-radius:8px;
+    padding:12px 16px;
+    margin:10px 0;
+  }
+  .info-box strong{color:var(--verde);}
+  .aviso{
+    background:#fff4e6;
+    border-left:4px solid var(--destaque);
+    padding:10px 14px;
+    border-radius:6px;
+    margin:10px 0;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:14px;
+    margin-top:10px;
+  }
+  .photo-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(160px,1fr));
+    gap:12px;
+    margin:12px 0 20px;
+  }
+  .photo-thumb{
+    display:block;
+    width:100%;
+    padding:0;
+    overflow:hidden;
+    border:0;
+    border-radius:8px;
+    background:#eee;
+    cursor:zoom-in;
+  }
+  .photo-thumb img{
+    display:block;
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    transition:transform .2s ease;
+  }
+  .photo-thumb:hover img{transform:scale(1.04);}
+  .photo-viewer{
+    width:min(96vw, 1100px);
+    max-width:none;
+    max-height:96vh;
+    padding:44px 58px 20px;
+    border:0;
+    border-radius:12px;
+    background:#171717;
+    color:#fff;
+  }
+  .photo-viewer::backdrop{background:rgba(0,0,0,.88);}
+  .photo-viewer figure{margin:0;text-align:center;}
+  .photo-viewer img{
+    display:block;
+    max-width:100%;
+    max-height:calc(96vh - 105px);
+    margin:0 auto;
+    object-fit:contain;
+    cursor:zoom-in;
+    transition:transform .2s ease;
+  }
+  .photo-viewer img.zoomed{
+    max-width:none;
+    max-height:none;
+    cursor:zoom-out;
+    transform:scale(1.8);
+  }
+  .photo-viewer figure{overflow:auto;max-height:calc(96vh - 65px);}
+  .photo-viewer figcaption{padding-top:10px;}
+  .viewer-button{
+    position:absolute;
+    display:grid;
+    place-items:center;
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.16);
+    color:#fff;
+    font-size:1.6rem;
+    cursor:pointer;
+  }
+  .viewer-button:hover{background:rgba(255,255,255,.3);}
+  .viewer-close{top:10px;right:10px;}
+  .viewer-prev{top:50%;left:10px;transform:translateY(-50%);}
+  .viewer-next{top:50%;right:10px;transform:translateY(-50%);}
+  .viewer-position{margin:10px 0 0;text-align:center;color:#ddd;font-size:.9rem;}
+  .card{
+    background:var(--areia);
+    border-radius:8px;
+    padding:12px 14px;
+    border:1px solid #e5ddcc;
+  }
+  .card h4{margin-top:0;}
+  footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+    font-size:.9rem;
+  }
+  @media(max-width:600px){
+    header h1{font-size:1.6rem;}
+    section{padding:16px;}
+    .photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .photo-thumb img{height:130px;}
+    .photo-viewer{padding:48px 46px 16px;}
+    .photo-viewer img{max-height:calc(96vh - 115px);}
+  }
+  body{
+    background:#10251f;
+    color:#1e293b;
+    font-family:"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.7;
+    padding-bottom:60px;
+    scroll-behavior:smooth;
+  }
+  header{
+    background:linear-gradient(135deg,#10251f 0%,#1f6f54 100%);
+    color:#fff;
+    padding:40px 20px;
+    border-bottom:4px solid #b5651d;
+  }
+  header h1{
+    color:#fff;
+    font-size:2.6rem;
+    text-shadow:2px 2px 4px rgba(0,0,0,.3);
+  }
+  header p{font-size:1.1rem;color:#e8f4ef;margin:8px 0 20px;}
+  .header-table-container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:20px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+    text-align:left;
+    backdrop-filter:blur(10px);
+  }
+  .header-table-container h2{
+    display:block;
+    margin:0 auto 15px;
+    padding:0 0 8px;
+    border:0;
+    border-bottom:2px solid #b5651d;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    color:#fff;
+    text-align:center;
+    font-size:1.35rem;
+  }
+  .resumo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin-top:20px;
+  }
+  .resumo-card{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border-radius:10px;
+    background:#fff;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+  }
+  .resumo-header{
+    display:flex;
+    flex-direction:column;
+    padding:14px 16px;
+    color:#fff;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .resumo-header span{font-size:.85rem;font-weight:400;opacity:.9;margin-bottom:4px;}
+  .bg-green{background:#1f6f54;}
+  .bg-teal{background:#0d9488;}
+  .bg-orange{background:#b5651d;}
+  .resumo-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin:0;
+    padding:14px;
+    list-style:none;
+    background:#fff;
+  }
+  .resumo-list li{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin:0;
+    padding:10px;
+    border-left:4px solid #1f6f54;
+    border-radius:8px;
+    background:#f8fafc;
+    transition:background .2s ease;
+  }
+  .resumo-list li:hover{background:#e8f4ef;}
+  .resumo-list li.border-teal{border-left-color:#0d9488;}
+  .resumo-list li.border-orange{border-left-color:#b5651d;}
+  .item-name{flex:1;font-weight:600;font-size:.95rem;}
+  .item-name a{color:#1e293b;text-decoration:none;}
+  .item-name a:hover{color:#1f6f54;text-decoration:underline;}
+  .item-number{
+    display:inline-flex;
+    width:24px;
+    height:24px;
+    align-items:center;
+    justify-content:center;
+    margin-right:8px;
+    border-radius:50%;
+    background:#1f6f54;
+    color:#fff;
+    font-size:.8rem;
+    font-weight:700;
+  }
+  .btn-como-chegar{
+    display:inline-block;
+    padding:4px 10px;
+    border:1px solid #1f6f54;
+    border-radius:20px;
+    color:#1f6f54;
+    font-size:.75rem;
+    font-weight:600;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .btn-como-chegar:hover{background:#1f6f54;color:#fff;}
+  .nav-container{
+    position:sticky;
+    top:0;
+    z-index:100;
+    padding:12px 20px;
+    border-bottom:2px solid #b5651d;
+    background:rgba(16,37,31,.96);
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+    backdrop-filter:blur(15px);
+  }
+  .nav-links{
+    display:flex;
+    max-width:1200px;
+    gap:10px;
+    margin:0 auto;
+    padding-bottom:5px;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+  }
+  .nav-links a{
+    flex-shrink:0;
+    padding:8px 14px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    color:#e8f4ef;
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:all .2s ease;
+  }
+  .nav-links a:hover{transform:translateY(-2px);border-color:#b5651d;background:#b5651d;color:#fff;}
+  main{max-width:1200px;margin:40px auto;padding:0 20px;}
+  section{
+    margin-bottom:40px;
+    padding:24px;
+    border:1px solid #e5ddcc;
+    border-left:6px solid #1f6f54;
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,.14);
+    scroll-margin-top:85px;
+  }
+  section.destaque{border-left-color:#b5651d;}
+  .day-section{background:#fff;}
+  .place-section{
+    margin:22px 0;
+    padding:20px;
+    border:1px solid #cfe2d9;
+    border-left:6px solid #1f6f54;
+    border-radius:12px;
+    background:#f2f8f5;
+    box-shadow:0 3px 10px rgba(31,111,84,.08);
+    scroll-margin-top:100px;
+  }
+  .place-section:nth-of-type(even){
+    border-color:#eedbc5;
+    border-left-color:#b5651d;
+    background:#fff8ef;
+    box-shadow:0 3px 10px rgba(181,101,29,.08);
+  }
+  .place-section h3{margin-top:0;}
+  .place-section h4{margin-top:22px;color:#475569;}
+  .place-section .btn-return{margin-right:8px;}
+  section h2{
+    display:inline-block;
+    margin:0 0 20px;
+    padding:10px 22px;
+    border:0;
+    border-radius:30px;
+    background:linear-gradient(90deg,#1f6f54,#b5651d);
+    box-shadow:0 4px 15px rgba(31,111,84,.25);
+    color:#fff;
+    font-size:1.55rem;
+    scroll-margin-top:100px;
+  }
+  section h3{margin:22px 0 10px;color:#1f6f54;scroll-margin-top:100px;}
+  section h4{scroll-margin-top:100px;}
+  section p,section li{font-size:1rem;}
+  .card{background:#f8fafc;border-color:#e2e8f0;}
+  .photo-gallery{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));}
+  .photo-thumb{box-shadow:0 4px 10px rgba(0,0,0,.1);}
+  .photo-carousel{
+    position:relative;
+    display:grid;
+    grid-template-columns:minmax(90px,1fr) minmax(0,3.2fr) minmax(90px,1fr);
+    align-items:center;
+    gap:12px;
+    margin:12px 0 24px;
+    padding:0 8px;
+  }
+  .photo-gallery{
+    display:grid;
+    grid-column:2;
+    grid-template-columns:minmax(0,1fr);
+    min-width:0;
+    margin:0;
+    padding:0;
+    overflow:visible;
+  }
+  .photo-thumb{
+    display:none;
+    width:100%;
+    height:auto;
+    max-width:none;
+    opacity:1;
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .photo-thumb.is-active{
+    display:block;
+    grid-column:1;
+    height:min(60vh,520px);
+    opacity:1;
+    box-shadow:0 8px 22px rgba(31,111,84,.28);
+  }
+  .photo-thumb.is-active img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    background:#f1f5f9;
+  }
+  .photo-preview{
+    display:block;
+    width:100%;
+    max-width:180px;
+    aspect-ratio:4/3;
+    justify-self:center;
+    overflow:hidden;
+    padding:0;
+    border:0;
+    border-radius:8px;
+    background:#eee;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+    opacity:.68;
+    cursor:pointer;
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .photo-preview:hover{opacity:1;transform:scale(1.04);}
+  .photo-preview[hidden]{display:none;}
+  .photo-preview img{display:block;width:100%;height:100%;object-fit:cover;}
+  .photo-carousel-control{
+    position:absolute;
+    top:50%;
+    z-index:2;
+    display:grid;
+    width:38px;
+    height:38px;
+    place-items:center;
+    border:0;
+    border-radius:50%;
+    background:#1f6f54;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+    color:white;
+    font-size:1.4rem;
+    cursor:pointer;
+    transform:translateY(-50%);
+  }
+  .photo-carousel-control:hover{background:#b5651d;}
+  .photo-carousel-prev{left:calc(19.2% + 6px);}
+  .photo-carousel-next{right:calc(19.2% + 6px);}
+  .photo-empty{
+    grid-column:1/-1;
+    margin:0;
+    padding:10px 12px;
+    border-radius:8px;
+    background:#fff4e6;
+    color:#7c4313;
+    font-size:.9rem;
+  }
+  .photo-thumb.photo-missing{display:none;}
+  .food-section{margin-top:24px;}
+  .food-item{
+    margin:22px 0;
+    padding:18px;
+    border:1px solid #e5ddcc;
+    border-radius:12px;
+    background:#fffdf8;
+  }
+  .food-item h3{margin-top:0;}
+  .food-item .food-layout{
+    display:grid;
+    grid-template-columns:minmax(220px,.8fr) minmax(0,1.8fr);
+    align-items:start;
+    gap:22px;
+  }
+  .food-item .food-photo h4{margin-top:0;}
+  .food-item .food-description{min-width:0;}
+  .food-item .photo-carousel{
+    grid-template-columns:minmax(0,1fr);
+    max-width:300px;
+    margin:8px auto 12px;
+    padding:0;
+  }
+  .food-item .photo-gallery{grid-column:1;}
+  .food-item .photo-preview,
+  .food-item .photo-carousel-control{display:none;}
+  .food-item .photo-thumb.is-active{
+    width:100%;
+    height:230px;
+  }
+  .food-item .food-description > p:first-child{margin-top:0;}
+  .food-curiosity{
+    padding:16px;
+    border-left:5px solid #b5651d;
+    border-radius:8px;
+    background:#fff4e6;
+  }
+  @media(max-width:600px){
+    .photo-carousel{
+      grid-template-columns:minmax(48px,.65fr) minmax(0,3fr) minmax(48px,.65fr);
+      gap:8px;
+    }
+    .photo-gallery{padding:0;}
+    .photo-thumb.is-active{height:min(56vh,420px);}
+    .photo-preview{max-width:110px;}
+    .photo-carousel-prev{left:calc(15.1% + 2px);}
+    .photo-carousel-next{right:calc(15.1% + 2px);}
+    .photo-carousel-control{width:32px;height:32px;font-size:1.15rem;}
+    .food-item .food-layout{grid-template-columns:minmax(0,1fr);gap:8px;}
+    .food-item .food-photo{width:min(100%,300px);margin:0 auto;}
+    .food-item .food-photo h4{text-align:center;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .photo-thumb,.photo-preview{transition:none;}
+  }
+  .btn-return{
+    display:inline-block;
+    margin:14px 0 0;
+    padding:8px 14px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    background:#f1f5f9;
+    color:#1f6f54;
+    font-size:.85rem;
+    font-weight:600;
+    text-decoration:none;
+    transition:all .2s ease;
+  }
+  .btn-return:hover{background:#1f6f54;color:#fff;}
+  .btn-return-top{margin:0 0 18px;background:#e8f4ef;border-color:#b7d9ca;}
+  #btn-top{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:99;
+    display:none;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    background:#b5651d;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+    color:#fff;
+    font-size:1.2rem;
+    cursor:pointer;
+  }
+  #btn-top:hover{background:#1f6f54;transform:scale(1.08);}
+  @media(max-width:768px){
+    header h1{font-size:2rem;}
+    .resumo-list li{align-items:flex-start;flex-direction:column;}
+    .btn-como-chegar{align-self:flex-end;}
+    section h2{font-size:1.3rem;}
+  }
+  @media(max-width:480px){
+    .resumo-grid{grid-template-columns:1fr;}
+    main{padding:0 12px;}
+    section{padding:16px;}
+    .nav-container{padding:10px;}
+  }
+</style>
+</head>
+<body>
+
+<button id="btn-top" type="button" aria-label="Voltar ao topo" title="Voltar ao topo">⬆</button>
+
+<header id="indice-topo">
+  <h1>ROTEIRO PARÁ</h1>
+  <p>Guia completo — 11/11/2026 a 25/11/2026</p>
+  <div class="header-table-container">
+    <h2>Resumo do roteiro <span>(selecione um destino para navegar)</span></h2>
+    <div class="resumo-grid">
+      <article class="resumo-card">
+        <div class="resumo-header bg-green"><span>11/11/2026 — Chegada</span>Belém</div>
+        <ul class="resumo-list">
+          <li class="border-green"><div class="item-name"><span class="item-number">1</span><a href="#historia-point-acai">Point do Açaí</a></div><a class="btn-como-chegar" href="#fotos-point-acai">Fotos</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-teal"><span>12 a 14/11/2026</span>Soure — Ilha de Marajó</div>
+        <ul class="resumo-list">
+          <li class="border-teal"><div class="item-name"><span class="item-number">1</span><a href="#historia-soure">Soure</a></div><a class="btn-como-chegar" href="#fotos-soure">Fotos</a></li>
+          <li class="border-teal"><div class="item-name"><span class="item-number">2</span><a href="#historia-praia-barra-velha">Praia da Barra Velha</a></div><a class="btn-como-chegar" href="#fotos-praia-barra-velha">Fotos</a></li>
+          <li class="border-teal"><div class="item-name"><span class="item-number">3</span><a href="#historia-mangue-mata-fome">Mangue Mata Fome</a></div><a class="btn-como-chegar" href="#fotos-mangue-mata-fome">Fotos</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-orange"><span>14 a 18/11/2026</span>Belém — atrações e natureza</div>
+        <ul class="resumo-list">
+          <li class="border-orange"><div class="item-name"><span class="item-number">1</span><a href="#historia-mercado-ver-o-peso">Mercado Ver-o-Peso</a></div><a class="btn-como-chegar" href="#fotos-mercado-ver-o-peso">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">2</span><a href="#historia-estacao-docas">Estação das Docas</a></div><a class="btn-como-chegar" href="#fotos-estacao-docas">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">3</span><a href="#historia-mangal-garcas">Mangal das Garças</a></div><a class="btn-como-chegar" href="#fotos-mangal-garcas">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">4</span><a href="#historia-forte-presepio">Forte do Presépio</a></div><a class="btn-como-chegar" href="#fotos-forte-presepio">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">5</span><a href="#historia-ilha-combu">Ilha do Combu</a></div><a class="btn-como-chegar" href="#fotos-ilha-combu">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">6</span><a href="#historia-casa-onze-janelas">Casa das Onze Janelas</a></div><a class="btn-como-chegar" href="#fotos-casa-onze-janelas">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">7</span><a href="#historia-theatro-paz">Theatro da Paz</a></div><a class="btn-como-chegar" href="#fotos-theatro-paz">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">8</span><a href="#historia-parque-utinga">Parque Estadual do Utinga</a></div><a class="btn-como-chegar" href="#fotos-parque-utinga">Fotos</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-orange"><span>17/11/2026</span>Belém</div>
+        <ul class="resumo-list">
+          <li class="border-orange"><div class="item-name"><span class="item-number">1</span><a href="#igreja-nossa-senhora-nazare">Igreja Nossa Senhora de Nazaré</a></div><a class="btn-como-chegar" href="#fotos-igreja-nossa-senhora-nazare">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">2</span><a href="#mercado-sao-braz">Mercado São Braz</a></div><a class="btn-como-chegar" href="#fotos-mercado-sao-braz">Fotos</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-green"><span>Gastronomia regional</span>Comidas típicas do Pará</div>
+        <ul class="resumo-list">
+          <li class="border-green"><div class="item-name"><span class="item-number">1</span><a href="#historia-pato-tucupi">Pato no Tucupi</a></div><a class="btn-como-chegar" href="#fotos-pato-tucupi">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">2</span><a href="#historia-tacaca">Tacacá</a></div><a class="btn-como-chegar" href="#fotos-tacaca">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">3</span><a href="#historia-manicoba">Maniçoba</a></div><a class="btn-como-chegar" href="#fotos-manicoba">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">4</span><a href="#historia-acai-paraense">Açaí Paraense</a></div><a class="btn-como-chegar" href="#fotos-acai-paraense">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">5</span><a href="#historia-caruru-paraense">Caruru Paraense</a></div><a class="btn-como-chegar" href="#fotos-caruru-paraense">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">6</span><a href="#historia-filhote-brasa">Filhote na Brasa</a></div><a class="btn-como-chegar" href="#fotos-filhote-brasa">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">7</span><a href="#historia-caldeirada-paraense">Caldeirada Paraense</a></div><a class="btn-como-chegar" href="#fotos-caldeirada-paraense">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">8</span><a href="#historia-vatapa-paraense">Vatapá Paraense</a></div><a class="btn-como-chegar" href="#fotos-vatapa-paraense">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">9</span><a href="#historia-chibe">Chibé</a></div><a class="btn-como-chegar" href="#fotos-chibe">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">10</span><a href="#historia-bolo-macaxeira">Bolo de Macaxeira</a></div><a class="btn-como-chegar" href="#fotos-bolo-macaxeira">Fotos</a></li>
+          <li class="border-green"><div class="item-name"><span class="item-number">11</span><a href="#historia-peixe-acai">Peixe Frito com Açaí</a></div><a class="btn-como-chegar" href="#fotos-peixe-acai">Fotos</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-green"><span>18/11/2026</span>Deslocamento para Alter do Chão</div>
+        <ul class="resumo-list"><li class="border-green"><div class="item-name"><span class="item-number">1</span><a href="#dia18">Belém → Santarém</a></div><a class="btn-como-chegar" href="#dia18">Ver dia</a></li></ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-teal"><span>19 a 23/11/2026</span>Alter do Chão</div>
+        <ul class="resumo-list">
+          <li class="border-teal"><div class="item-name"><span class="item-number">1</span><a href="#alter-19">19/11 — Roteiro de Praias</a></div><a class="btn-como-chegar" href="#alter-19">Ver dia</a></li>
+          <li class="border-teal"><div class="item-name"><span class="item-number">2</span><a href="#alter-20">20/11 — Rio Arapiuns</a></div><a class="btn-como-chegar" href="#alter-20">Ver dia</a></li>
+          <li class="border-teal"><div class="item-name"><span class="item-number">3</span><a href="#alter-21">21/11 — Encontro das Águas</a></div><a class="btn-como-chegar" href="#alter-21">Ver dia</a></li>
+        </ul>
+      </article>
+      <article class="resumo-card">
+        <div class="resumo-header bg-orange"><span>23 a 25/11/2026</span>Santarém e retorno</div>
+        <ul class="resumo-list">
+          <li class="border-orange"><div class="item-name"><span class="item-number">1</span><a href="#historia-santarem-orla">Orla de Santarém</a></div><a class="btn-como-chegar" href="#fotos-santarem-orla">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">2</span><a href="#historia-encontro-aguas">Encontro das Águas</a></div><a class="btn-como-chegar" href="#fotos-encontro-aguas">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">3</span><a href="#historia-praca-fortaleza">Praça Fortaleza do Tapajós</a></div><a class="btn-como-chegar" href="#fotos-praca-fortaleza">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">4</span><a href="#historia-centro-cultural-joao-fona">Centro Cultural João Fona</a></div><a class="btn-como-chegar" href="#fotos-centro-cultural-joao-fona">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">5</span><a href="#historia-centro-artesanato-tapajos">Centro de Artesanato do Tapajós</a></div><a class="btn-como-chegar" href="#fotos-centro-artesanato-tapajos">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">6</span><a href="#historia-parque-cidade">Parque da Cidade</a></div><a class="btn-como-chegar" href="#fotos-parque-cidade">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">7</span><a href="#historia-praia-maracana">Praia do Maracanã</a></div><a class="btn-como-chegar" href="#fotos-praia-maracana">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">3</span><a href="#dia25">Retorno — 25/11</a></div><a class="btn-como-chegar" href="#dia25">Ver dia</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</header>
+
+<div class="nav-container">
+  <nav class="nav-links" aria-label="Navegação do roteiro">
+    <a href="#dia11">11/11 — Belém</a>
+    <a href="#dia12">12/11 — Soure</a>
+    <a href="#dia14-18">14–18/11 — Hospedagem em Belém</a>
+    <a href="#dia15">15/11 — Centro histórico</a>
+    <a href="#dia17">17/11 — Belém</a>
+    <a href="#comidas-paraenses">Comidas típicas</a>
+    <a href="#dia18">18/11 — Deslocamento</a>
+    <a href="#alter-19">19–23/11 — Alter</a>
+    <a href="#santarem">Santarém</a>
+    <a href="#galeria-fotos">📸 Fotos</a>
+    <a href="#dia25">25/11 — Retorno</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- DIA 11/11 -->
+  <section id="dia11" class="day-section">
+    <h2 id="chegada-belem">DIA 11/11/2026 (Quarta-feira)</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Saída de GRU às 14:10h e chegada em BEL às 17:50h.</strong></p>
+    <p><strong>Amazinn Hotel</strong> (Rua General Gurjão, 319).</p>
+    <p>1,5 Km à pé do Terminal Hidroviário de Belém (Luiz Rebelo Neto) — no armazém 10 — Av. Marechal Hermes, 901 — Reduto ou Umarizal. Funcionamento para embarque: 5:30h às 17:00h (vendas até 20h, idoso paga meia).</p>
+    <div class="info-box">
+      <strong>Distâncias:</strong>
+      <ul>
+        <li>Do terminal para Estação das Docas são 800 m.</li>
+        <li>Até o Point do Açaí são 200 m.</li>
+        <li>De lá para Amazinn Hotel são 650 m.</li>
+      </ul>
+    </div>
+
+    <article class="place-section">
+    <h3 id="historia-point-acai">Point do Açaí</h3>
+    <p>O <strong>Point do Açaí</strong> é uma das referências gastronômicas de Belém e um lugar muito procurado para experimentar o açaí paraense. Diferentemente da versão doce popular em outras regiões do Brasil, o açaí local é tradicionalmente servido de forma salgada, acompanhado de peixe, camarão, charque ou farinha de mandioca.</p>
+    <p>O cardápio valoriza ingredientes amazônicos, como açaí fresco, peixes regionais e camarão. A experiência também ajuda a conhecer a importância cultural do açaí, alimento presente há séculos no cotidiano da população amazônica.</p>
+    <p>Fundado em <strong>2004</strong>, o Point do Açaí tornou-se uma das mais conhecidas redes de restaurantes especializados na culinária paraense. O açaí costuma ser servido com peixes fritos, camarão, charque ou farinha, seguindo a tradição alimentar local. Para quem visita Belém, é uma oportunidade de provar sabores autênticos da Amazônia.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+    <h3 id="galeria-fotos">Aeroporto de Belém — Fotos</h3>
+    <h4 id="fotos-aeroporto">Galeria do Aeroporto de Belém</h4>
+    <div class="photo-gallery" aria-label="Fotos do aeroporto de Belém">
+      <button class="photo-thumb" type="button" data-photo="img/aeroporto1.png" data-caption="Aeroporto de Belém, Belém, Pará — 11/11/2026 — foto 1"><img src="img/aeroporto1.png" alt="Aeroporto de Belém, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/aeroporto2.png" data-caption="Aeroporto de Belém, Belém, Pará — 11/11/2026 — foto 2"><img src="img/aeroporto2.png" alt="Aeroporto de Belém, foto 2" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+    <h3 id="fotos-point-acai">Point do Açaí — Fotos</h3>
+    <div class="photo-gallery" aria-label="Fotos do Point do Açaí">
+      <button class="photo-thumb" type="button" data-photo="img/pa1.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 1"><img src="img/pa1.png" alt="Point do Açaí, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pa2.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 2"><img src="img/pa2.png" alt="Point do Açaí, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pa3.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 3"><img src="img/pa3.png" alt="Point do Açaí, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pa4.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 4"><img src="img/pa4.png" alt="Point do Açaí, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pa5.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 5"><img src="img/pa5.png" alt="Point do Açaí, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pa6.png" data-caption="Point do Açaí, Belém, Pará — 11/11/2026 — foto 6"><img src="img/pa6.png" alt="Point do Açaí, foto 6" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- DIA 12/11 -->
+  <section id="dia12" class="day-section">
+    <h2>DIA 12/11/2026 (Quinta-feira) — Soure</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Hospedagem:</strong> Apartamento Suite em Soure — Quarta rua, esquina com a Travessa 15, Centro.</p>
+
+    <article class="place-section">
+    <h3 id="historia-soure">Soure</h3>
+    <p>Localizada na Ilha de Marajó, <strong>Soure</strong> é conhecida como a “Pérola do Marajó”. A cidade combina natureza preservada, cultura tradicional, gastronomia marcante e paisagens onde campos, manguezais, rios e praias convivem em harmonia.</p>
+    <p>A cultura local reúne influências indígenas, caboclas e portuguesas. Entre suas manifestações estão o carimbó, o lundu e a produção artesanal, especialmente a cerâmica marajoara, reconhecida pelos grafismos inspirados em povos ancestrais da Amazônia.</p>
+    <p>A culinária tem como destaques o <strong>Queijo do Marajó</strong>, produzido com leite de búfala, e pratos com peixes regionais, camarão, caranguejo e açaí. A criação de búfalos também marca a paisagem e a identidade cultural do município.</p>
+    <p>Entre os atrativos estão as praias do Pesqueiro e da Barra Velha, fazendas marajoaras e ateliês de artesanato. Passeios por rios, igarapés e áreas de reserva permitem observar a rica fauna e flora da região. Visitar Soure é conhecer uma Amazônia autêntica, onde cultura, natureza e hospitalidade marajoara transformam cada experiência em lembrança.</p>
+    <p>Fundada em <strong>1847</strong> e conhecida como a <strong>“Capital do Marajó”</strong>, Soure é a principal porta de entrada da ilha. A cidade preserva a cerâmica marajoara e tradições ligadas à criação de búfalos; praias, manguezais, fazendas e passeios ecológicos revelam sua biodiversidade e cultura.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+    <h3 id="fotos-soure">Soure — Fotos</h3>
+    <div class="photo-gallery" aria-label="Fotos de Soure, Ilha de Marajó, Pará, de 11 a 14 de novembro">
+      <button class="photo-thumb" type="button" data-photo="img/so1.png" data-caption="Soure — 12/11/2026 — foto 1"><img src="img/so1.png" alt="Soure, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so2.png" data-caption="Soure — 12/11/2026 — foto 2"><img src="img/so2.png" alt="Soure, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so3.png" data-caption="Soure — 12/11/2026 — foto 3"><img src="img/so3.png" alt="Soure, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so4.png" data-caption="Soure — 12/11/2026 — foto 4"><img src="img/so4.png" alt="Soure, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so5.png" data-caption="Soure — 13/11/2026 — foto 5"><img src="img/so5.png" alt="Soure, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so6.jpeg" data-caption="Soure — 13/11/2026 — foto 6"><img src="img/so6.jpeg" alt="Soure, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so7.jpeg" data-caption="Soure — 13/11/2026 — foto 7"><img src="img/so7.jpeg" alt="Soure, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so8.jpeg" data-caption="Soure — 13/11/2026 — foto 8"><img src="img/so8.jpeg" alt="Soure, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so9.png" data-caption="Soure — 14/11/2026 — foto 9"><img src="img/so9.png" alt="Soure, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so10.png" data-caption="Soure — 14/11/2026 — foto 10"><img src="img/so10.png" alt="Soure, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so11.png" data-caption="Soure — 14/11/2026 — foto 11"><img src="img/so11.png" alt="Soure, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/so12.png" data-caption="Soure — 14/11/2026 — foto 12"><img src="img/so12.png" alt="Soure, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-praia-barra-velha">Praia da Barra Velha</h3>
+    <p>A <strong>Praia da Barra Velha</strong> é um dos cartões-postais de Soure. Suas faixas de areia, vegetação nativa, dunas e manguezais formam uma paisagem típica da Amazônia Marajoara, moldada pela força das marés. O ambiente tranquilo convida a contemplar a natureza, relaxar e apreciar o pôr do sol.</p>
+    <p>A região abriga aves, caranguejos e vegetação característica dos ecossistemas costeiros. Também é possível avistar búfalos nas áreas próximas, uma das imagens marcantes da cultura marajoara. A atmosfera preservada faz da praia um lugar especial para conhecer a natureza e as tradições da ilha.</p>
+    <p>Uma das praias mais conhecidas de Soure, a Barra Velha combina extensas faixas de areia, dunas e manguezais. As águas mudam conforme as marés amazônicas, e a praia convida a caminhadas, à contemplação da paisagem e à observação de aves e crustáceos.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+    <h3 id="fotos-praia-barra-velha">Praia da Barra Velha — Fotos</h3>
+    <div class="photo-gallery" aria-label="Fotos da Praia da Barra Velha em 12 de novembro">
+      <button class="photo-thumb" type="button" data-photo="img/pbv1.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 1"><img src="img/pbv1.png" alt="Praia da Barra Velha, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv2.jpeg" data-caption="Praia da Barra Velha — 12/11/2026 — foto 2"><img src="img/pbv2.jpeg" alt="Praia da Barra Velha, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv3.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 3"><img src="img/pbv3.png" alt="Praia da Barra Velha, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv4.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 4"><img src="img/pbv4.png" alt="Praia da Barra Velha, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv5.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 5"><img src="img/pbv5.png" alt="Praia da Barra Velha, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv6.png" data-caption="Praia da Barra Velha — 12/11/2026 — foto 6"><img src="img/pbv6.png" alt="Praia da Barra Velha, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv7.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 7"><img src="img/pbv7.png" alt="Praia da Barra Velha, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv8.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 8"><img src="img/pbv8.png" alt="Praia da Barra Velha, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv9.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 9"><img src="img/pbv9.png" alt="Praia da Barra Velha, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv10.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 10"><img src="img/pbv10.png" alt="Praia da Barra Velha, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv11.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 11"><img src="img/pbv11.png" alt="Praia da Barra Velha, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/pbv12.png" data-caption="Praia da Barra Velha — 13/11/2026 — foto 12"><img src="img/pbv12.png" alt="Praia da Barra Velha, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <h3>Travessia Belém–Soure (5ªF)</h3>
+    <ul>
+      <li><strong>1)</strong> Expresso Campeã 9: <strong>6:30h</strong> ou Expresso Golfinho: <strong>8:30h</strong> (Master Motors)</li>
+    </ul>
+  </section>
+
+  <!-- DIA 13/11 -->
+  <section id="dia13" class="day-section">
+    <h2>DIA 13/11/2026 (Sexta-feira) — Soure</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+
+    <article class="place-section">
+    <h3 id="historia-mangue-mata-fome">Mangue Mata Fome</h3>
+    <p>O <strong>Mata Fome</strong> é um passeio ecológico que permite conhecer de perto os manguezais de Soure, por trilhas suspensas, passarelas ou pequenas embarcações. Durante o percurso, é possível observar a vegetação típica, caranguejos, aves e a dinâmica das marés, que influencia a vida local.</p>
+    <p>Guias da região compartilham informações sobre a fauna, a flora e a importância do manguezal para a preservação ambiental e para as comunidades que dependem dele. Entre raízes aéreas e canais naturais, o passeio também revela a relação histórica dos moradores com esse ecossistema e oferece momentos de contemplação da natureza.</p>
+    <p>Nas trilhas e passarelas suspensas, os visitantes observam raízes aéreas, caranguejos e aves enquanto conhecem o papel do manguezal como berçário natural de espécies marinhas e a relação das comunidades locais com esse ecossistema.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+    <h3 id="fotos-mangue-mata-fome">Mangue Mata Fome — Fotos</h3>
+    <div class="photo-gallery" aria-label="Fotos do Mangue Mata Fome, Soure, Ilha de Marajó, Pará">
+      <button class="photo-thumb" type="button" data-photo="img/mg1.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 1"><img src="img/mg1.png" alt="Mangue Mata Fome, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg2.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 2"><img src="img/mg2.png" alt="Mangue Mata Fome, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg3.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 3"><img src="img/mg3.png" alt="Mangue Mata Fome, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg4.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 4"><img src="img/mg4.png" alt="Mangue Mata Fome, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg5.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 5"><img src="img/mg5.png" alt="Mangue Mata Fome, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg6.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 6"><img src="img/mg6.png" alt="Mangue Mata Fome, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg7.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 7"><img src="img/mg7.png" alt="Mangue Mata Fome, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg8.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 8"><img src="img/mg8.png" alt="Mangue Mata Fome, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg9.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 9"><img src="img/mg9.png" alt="Mangue Mata Fome, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg10.jpeg" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 10"><img src="img/mg10.jpeg" alt="Mangue Mata Fome, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg11.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 11"><img src="img/mg11.png" alt="Mangue Mata Fome, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mg12.png" data-caption="Mangue Mata Fome, Soure, Ilha de Marajó, Pará — 13/11/2026 — foto 12"><img src="img/mg12.png" alt="Mangue Mata Fome, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+  </section>
+
+  <!-- DIA 14/11 -->
+  <section id="dia14" class="day-section">
+    <h2>DIA 14/11/2026 (Sábado) — Retorno a Belém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <h3>Travessia Soure–Belém (Sábado)</h3>
+    <ul>
+      <li><strong>2)</strong> Expresso Golfinho: <strong>5:30h</strong> ou Henvil Catamarã Álamo: <strong>15h</strong></li>
+    </ul>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- DIA 14 a 18/11 -->
+  <section id="dia14-18" class="day-section">
+    <h2 id="estadia-belem">Dia 14/11/2026 à 18/11/2026 (4ªf) — Estadia em Belém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Hospedagem:</strong> Marajoara Flat (Avenida Presidente Vargas, 351 206).</p>
+    <div class="info-box">
+      <strong>Distâncias:</strong>
+      <ul>
+        <li>500 m à pé da Estação das Docas.</li>
+        <li>300 m à pé do Point do Açaí.</li>
+      </ul>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="atracoes-belem" class="day-section">
+    <h2>Atrações em Belém — datas não especificadas no roteiro</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>Em Belém do Pará, visite o icônico Mercado Ver-o-Peso, assista ao pôr do sol na Estação das Docas, passeie pelo parque Mangal das Garças, conheça a imponente Basílica de Nossa Senhora de Nazaré e faça um rápido passeio de barco até a Ilha do Combu para provar a culinária amazônica.</p>
+
+    <article class="place-section">
+    <h3 id="historia-mercado-ver-o-peso">Mercado Ver-o-Peso</h3>
+    <p>O maior mercado a céu aberto da América Latina, ideal para ver ervas, peixes e frutas locais. <strong>Fechado aos domingos.</strong></p>
+    <p>Fundado em <strong>1625</strong>, o <strong>Mercado Ver-o-Peso</strong> é um dos mercados públicos mais antigos e importantes do Brasil e o maior mercado a céu aberto da América Latina. Seu nome vem do antigo posto fiscal onde as mercadorias eram pesadas e tributadas.</p>
+    <p>Às margens da Baía do Guajará, o complexo reúne o Mercado de Peixe, o Mercado de Carne, a Feira do Açaí e barracas de frutas, ervas medicinais, artesanato e especiarias amazônicas. É possível conhecer produtos como tucupi, jambu, cupuaçu, bacuri, castanha-do-pará e o açaí consumido tradicionalmente pelos paraenses. O Ver-o-Peso é também um patrimônio histórico e cultural que representa o cotidiano de Belém.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-mercado-ver-o-peso">Galeria do Mercado Ver-o-Peso</h4>
+    <div class="photo-gallery" aria-label="Imagens do Mercado Ver-o-Peso">
+      <button class="photo-thumb" type="button" data-photo="img/mvp1.png" data-caption="Mercado Ver-o-Peso — foto 1"><img src="img/mvp1.png" alt="Mercado Ver-o-Peso, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp2.png" data-caption="Mercado Ver-o-Peso — foto 2"><img src="img/mvp2.png" alt="Mercado Ver-o-Peso, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp3.png" data-caption="Mercado Ver-o-Peso — foto 3"><img src="img/mvp3.png" alt="Mercado Ver-o-Peso, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp4.png" data-caption="Mercado Ver-o-Peso — foto 4"><img src="img/mvp4.png" alt="Mercado Ver-o-Peso, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp5.png" data-caption="Mercado Ver-o-Peso — foto 5"><img src="img/mvp5.png" alt="Mercado Ver-o-Peso, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp6.png" data-caption="Mercado Ver-o-Peso — foto 6"><img src="img/mvp6.png" alt="Mercado Ver-o-Peso, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp7.png" data-caption="Mercado Ver-o-Peso — foto 7"><img src="img/mvp7.png" alt="Mercado Ver-o-Peso, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp8.png" data-caption="Mercado Ver-o-Peso — foto 8"><img src="img/mvp8.png" alt="Mercado Ver-o-Peso, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp9.png" data-caption="Mercado Ver-o-Peso — foto 9"><img src="img/mvp9.png" alt="Mercado Ver-o-Peso, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp10.png" data-caption="Mercado Ver-o-Peso — foto 10"><img src="img/mvp10.png" alt="Mercado Ver-o-Peso, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp11.png" data-caption="Mercado Ver-o-Peso — foto 11"><img src="img/mvp11.png" alt="Mercado Ver-o-Peso, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mvp12.png" data-caption="Mercado Ver-o-Peso — foto 12"><img src="img/mvp12.png" alt="Mercado Ver-o-Peso, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-estacao-docas">Estação das Docas</h3>
+    <p>Antigo porto transformado em polo de restaurantes, sorveterias e bares à beira do rio.</p>
+    <p>Inaugurada em <strong>2000</strong>, a <strong>Estação das Docas</strong> revitalizou antigos armazéns do Porto de Belém, construídos no início do século XX. A arquitetura industrial foi preservada e a área portuária tornou-se um dos principais polos turísticos da cidade.</p>
+    <p>Com mais de 500 metros à beira da Baía do Guajará, o complexo reúne restaurantes, cafeterias, sorveterias, cervejarias artesanais, lojas e espaços culturais, além de receber apresentações e exposições. A vista para a baía e o pôr do sol é um dos destaques.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-estacao-docas">Galeria da Estação das Docas</h4>
+    <div class="photo-gallery" aria-label="Imagens da Estação das Docas">
+      <button class="photo-thumb" type="button" data-photo="img/ed1.png" data-caption="Estação das Docas — foto 1"><img src="img/ed1.png" alt="Estação das Docas, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed2.png" data-caption="Estação das Docas — foto 2"><img src="img/ed2.png" alt="Estação das Docas, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed3.png" data-caption="Estação das Docas — foto 3"><img src="img/ed3.png" alt="Estação das Docas, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed4.png" data-caption="Estação das Docas — foto 4"><img src="img/ed4.png" alt="Estação das Docas, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed5.png" data-caption="Estação das Docas — foto 5"><img src="img/ed5.png" alt="Estação das Docas, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed6.png" data-caption="Estação das Docas — foto 6"><img src="img/ed6.png" alt="Estação das Docas, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed7.png" data-caption="Estação das Docas — foto 7"><img src="img/ed7.png" alt="Estação das Docas, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed8.png" data-caption="Estação das Docas — foto 8"><img src="img/ed8.png" alt="Estação das Docas, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed9.png" data-caption="Estação das Docas — foto 9"><img src="img/ed9.png" alt="Estação das Docas, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed10.png" data-caption="Estação das Docas — foto 10"><img src="img/ed10.png" alt="Estação das Docas, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed11.png" data-caption="Estação das Docas — foto 11"><img src="img/ed11.png" alt="Estação das Docas, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ed12.png" data-caption="Estação das Docas — foto 12"><img src="img/ed12.png" alt="Estação das Docas, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-mangal-garcas">Mangal das Garças</h3>
+    <p>Parque natural no centro com borboletário, torre de observação e aves soltas. <strong>Fechado às segundas-feiras.</strong></p>
+    <p>Criado em <strong>2005</strong>, o <strong>Mangal das Garças</strong> é um parque ecológico e turístico com cerca de 40 mil metros quadrados, dedicado à fauna e à flora amazônicas. Reúne viveiros de aves, borboletário, lagos, jardins temáticos e áreas de contemplação. O Farol de Belém, com cerca de 47 metros, oferece vista panorâmica da cidade e da Baía do Guajará. No fim da tarde, o retorno das garças ao parque é um espetáculo natural que inspirou seu nome.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-mangal-garcas">Galeria do Mangal das Garças</h4>
+    <div class="photo-gallery" aria-label="Fotos do Mangal das Garças">
+      <button class="photo-thumb" type="button" data-photo="img/mdg1.jpeg" data-caption="Mangal das Garças — foto 1"><img src="img/mdg1.jpeg" alt="Mangal das Garças, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg2.jpeg" data-caption="Mangal das Garças — foto 2"><img src="img/mdg2.jpeg" alt="Mangal das Garças, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg3.jpeg" data-caption="Mangal das Garças — foto 3"><img src="img/mdg3.jpeg" alt="Mangal das Garças, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg4.jpeg" data-caption="Mangal das Garças — foto 4"><img src="img/mdg4.jpeg" alt="Mangal das Garças, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg5.png" data-caption="Mangal das Garças — foto 5"><img src="img/mdg5.png" alt="Mangal das Garças, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg6.png" data-caption="Mangal das Garças — foto 6"><img src="img/mdg6.png" alt="Mangal das Garças, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg7.png" data-caption="Mangal das Garças — foto 7"><img src="img/mdg7.png" alt="Mangal das Garças, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg8.jpeg" data-caption="Mangal das Garças — foto 8"><img src="img/mdg8.jpeg" alt="Mangal das Garças, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg9.png" data-caption="Mangal das Garças — foto 9"><img src="img/mdg9.png" alt="Mangal das Garças, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg10.png" data-caption="Mangal das Garças — foto 10"><img src="img/mdg10.png" alt="Mangal das Garças, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg11.png" data-caption="Mangal das Garças — foto 11"><img src="img/mdg11.png" alt="Mangal das Garças, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/mdg12.jpeg" data-caption="Mangal das Garças — foto 12"><img src="img/mdg12.jpeg" alt="Mangal das Garças, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-theatro-paz">Theatro da Paz</h3>
+    <p>Na Praça da República. Teatro clássico lindo e imponente no coração da cidade.</p>
+    <h4>Horários e Duração:</h4>
+    <ul>
+      <li>Terça a sexta-feira: das 9h às 12h e das 14h às 17h (saídas de hora em hora).</li>
+      <li>Sábados e domingos: das 9h às 12h (saídas de hora em hora).</li>
+      <li>Duração do passeio: Aproximadamente 45 minutos a 1 hora.</li>
+      <li>Capacidade: Limite de até 40 a 50 pessoas por horário.</li>
+      <li>Preço: R$ 10,00 / R$ 5,00 (> 60 anos)</li>
+    </ul>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-theatro-paz">Galeria do Theatro da Paz</h4>
+    <div class="photo-gallery" aria-label="Fotos do Theatro da Paz">
+      <button class="photo-thumb" type="button" data-photo="img/tp1.png" data-caption="Theatro da Paz — foto 1"><img src="img/tp1.png" alt="Theatro da Paz, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp2.png" data-caption="Theatro da Paz — foto 2"><img src="img/tp2.png" alt="Theatro da Paz, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp3.png" data-caption="Theatro da Paz — foto 3"><img src="img/tp3.png" alt="Theatro da Paz, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp4.png" data-caption="Theatro da Paz — foto 4"><img src="img/tp4.png" alt="Theatro da Paz, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp5.png" data-caption="Theatro da Paz — foto 5"><img src="img/tp5.png" alt="Theatro da Paz, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp6.png" data-caption="Theatro da Paz — foto 6"><img src="img/tp6.png" alt="Theatro da Paz, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp7.png" data-caption="Theatro da Paz — foto 7"><img src="img/tp7.png" alt="Theatro da Paz, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp8.png" data-caption="Theatro da Paz — foto 8"><img src="img/tp8.png" alt="Theatro da Paz, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp9.png" data-caption="Theatro da Paz — foto 9"><img src="img/tp9.png" alt="Theatro da Paz, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp10.png" data-caption="Theatro da Paz — foto 10"><img src="img/tp10.png" alt="Theatro da Paz, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp11.png" data-caption="Theatro da Paz — foto 11"><img src="img/tp11.png" alt="Theatro da Paz, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/tp12.png" data-caption="Theatro da Paz — foto 12"><img src="img/tp12.png" alt="Theatro da Paz, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+  </section>
+
+  <!-- DIA 15/11 -->
+  <section id="dia15" class="day-section">
+    <h2>DIA 15/11/2026 — Centro histórico de Belém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+
+    <article class="place-section">
+    <h3 id="historia-casa-onze-janelas">Casa das Onze Janelas</h3>
+    <h4>Complexo Feliz Lusitânia</h4>
+    <p>Abriga o Forte do Presépio e a Casa das Onze Janelas na Cidade Velha.</p>
+    <p>A Casa das Onze Janelas integra o complexo histórico da Feliz Lusitânia, na Cidade Velha, e fica próxima ao Forte do Presépio.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-casa-onze-janelas">Galeria da Casa das Onze Janelas</h4>
+    <div class="photo-gallery" aria-label="Imagens da Casa das Onze Janelas em 15 de novembro de 2026">
+      <button class="photo-thumb" type="button" data-photo="img/c11j1.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 1"><img src="img/c11j1.png" alt="Casa das Onze Janelas, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j2.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 2"><img src="img/c11j2.png" alt="Casa das Onze Janelas, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j3.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 3"><img src="img/c11j3.png" alt="Casa das Onze Janelas, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j4.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 4"><img src="img/c11j4.png" alt="Casa das Onze Janelas, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j5.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 5"><img src="img/c11j5.png" alt="Casa das Onze Janelas, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j6.jpeg" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 6"><img src="img/c11j6.jpeg" alt="Casa das Onze Janelas, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j7.jpeg" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 7"><img src="img/c11j7.jpeg" alt="Casa das Onze Janelas, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j8.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 8"><img src="img/c11j8.png" alt="Casa das Onze Janelas, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j9.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 9"><img src="img/c11j9.png" alt="Casa das Onze Janelas, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j10.jpeg" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 10"><img src="img/c11j10.jpeg" alt="Casa das Onze Janelas, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j11.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 11"><img src="img/c11j11.png" alt="Casa das Onze Janelas, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/c11j12.png" data-caption="Casa das Onze Janelas — 15/11/2026 — foto 12"><img src="img/c11j12.png" alt="Casa das Onze Janelas, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-forte-presepio">Forte do Presépio</h3>
+    <p>O <strong>Forte do Presépio</strong> é um dos patrimônios históricos mais importantes de Belém e marca o local onde a cidade teve origem, em 1616. Construído às margens da Baía do Guajará pelos colonizadores portugueses, foi erguido para proteger a região e consolidar a ocupação da Amazônia.</p>
+    <p>Hoje, integra o complexo cultural da <strong>Feliz Lusitânia</strong> e abriga exposições arqueológicas e históricas que ajudam a contar a trajetória da ocupação amazônica, incluindo peças da cultura indígena marajoara e vestígios encontrados em escavações.</p>
+    <p>De suas muralhas, é possível contemplar a Baía do Guajará, as embarcações e o pôr do sol. Visitar o forte é conhecer o ponto de partida da história de Belém e um símbolo da identidade cultural paraense.</p>
+    <p>Construído pelos portugueses em <strong>1616</strong>, o Forte do Presépio marca a fundação de Belém. Erguido para proteger a região e afirmar o domínio português sobre a Amazônia, hoje integra o núcleo histórico da Feliz Lusitânia.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-forte-presepio">Galeria do Forte do Presépio</h4>
+    <div class="photo-gallery" aria-label="Fotos do Forte do Presépio, Belém, Pará">
+      <button class="photo-thumb" type="button" data-photo="img/fp1.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 1"><img src="img/fp1.png" alt="Forte do Presépio, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp2.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 2"><img src="img/fp2.png" alt="Forte do Presépio, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp3.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 3"><img src="img/fp3.png" alt="Forte do Presépio, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp4.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 4"><img src="img/fp4.png" alt="Forte do Presépio, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp5.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 5"><img src="img/fp5.png" alt="Forte do Presépio, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp6.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 6"><img src="img/fp6.png" alt="Forte do Presépio, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp7.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 7"><img src="img/fp7.png" alt="Forte do Presépio, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp8.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 8"><img src="img/fp8.png" alt="Forte do Presépio, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp9.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 9"><img src="img/fp9.png" alt="Forte do Presépio, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp10.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 10"><img src="img/fp10.png" alt="Forte do Presépio, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp11.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 11"><img src="img/fp11.png" alt="Forte do Presépio, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/fp12.png" data-caption="Forte do Presépio, Belém, Pará — 15/11/2026 — foto 12"><img src="img/fp12.png" alt="Forte do Presépio, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+  </section>
+
+  <!-- DIA 17/11 -->
+  <section id="dia17" class="day-section">
+    <h2>DIA 17/11/2026 — Belém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+
+    <article class="place-section photo-section">
+      <h3 id="igreja-nossa-senhora-nazare">Igreja Nossa Senhora de Nazaré</h3>
+      <h4 id="fotos-igreja-nossa-senhora-nazare">Galeria da Igreja Nossa Senhora de Nazaré</h4>
+      <div class="photo-gallery" aria-label="Fotos da Igreja Nossa Senhora de Nazaré em 17 de novembro de 2026">
+        <button class="photo-thumb" type="button" data-photo="img/insn1.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 1"><img src="img/insn1.png" alt="Igreja Nossa Senhora de Nazaré, foto 1" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn2.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 2"><img src="img/insn2.png" alt="Igreja Nossa Senhora de Nazaré, foto 2" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn3.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 3"><img src="img/insn3.png" alt="Igreja Nossa Senhora de Nazaré, foto 3" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn4.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 4"><img src="img/insn4.png" alt="Igreja Nossa Senhora de Nazaré, foto 4" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn5.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 5"><img src="img/insn5.png" alt="Igreja Nossa Senhora de Nazaré, foto 5" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn6.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 6"><img src="img/insn6.png" alt="Igreja Nossa Senhora de Nazaré, foto 6" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn7.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 7"><img src="img/insn7.png" alt="Igreja Nossa Senhora de Nazaré, foto 7" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn8.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 8"><img src="img/insn8.png" alt="Igreja Nossa Senhora de Nazaré, foto 8" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn9.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 9"><img src="img/insn9.png" alt="Igreja Nossa Senhora de Nazaré, foto 9" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn10.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 10"><img src="img/insn10.png" alt="Igreja Nossa Senhora de Nazaré, foto 10" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn11.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 11"><img src="img/insn11.png" alt="Igreja Nossa Senhora de Nazaré, foto 11" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/insn12.png" data-caption="Igreja Nossa Senhora de Nazaré — 17/11/2026 — foto 12"><img src="img/insn12.png" alt="Igreja Nossa Senhora de Nazaré, foto 12" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section photo-section">
+      <h3 id="mercado-sao-braz">Mercado São Braz</h3>
+      <h4 id="fotos-mercado-sao-braz">Galeria do Mercado São Braz</h4>
+      <div class="photo-gallery" aria-label="Fotos do Mercado São Braz em 17 de novembro de 2026">
+        <button class="photo-thumb" type="button" data-photo="img/msb1.png" data-caption="Mercado São Braz — 17/11/2026 — foto 1"><img src="img/msb1.png" alt="Mercado São Braz, foto 1" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb2.png" data-caption="Mercado São Braz — 17/11/2026 — foto 2"><img src="img/msb2.png" alt="Mercado São Braz, foto 2" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb3.png" data-caption="Mercado São Braz — 17/11/2026 — foto 3"><img src="img/msb3.png" alt="Mercado São Braz, foto 3" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb4.png" data-caption="Mercado São Braz — 17/11/2026 — foto 4"><img src="img/msb4.png" alt="Mercado São Braz, foto 4" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb5.png" data-caption="Mercado São Braz — 17/11/2026 — foto 5"><img src="img/msb5.png" alt="Mercado São Braz, foto 5" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb6.png" data-caption="Mercado São Braz — 17/11/2026 — foto 6"><img src="img/msb6.png" alt="Mercado São Braz, foto 6" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb7.png" data-caption="Mercado São Braz — 17/11/2026 — foto 7"><img src="img/msb7.png" alt="Mercado São Braz, foto 7" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb8.png" data-caption="Mercado São Braz — 17/11/2026 — foto 8"><img src="img/msb8.png" alt="Mercado São Braz, foto 8" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb9.png" data-caption="Mercado São Braz — 17/11/2026 — foto 9"><img src="img/msb9.png" alt="Mercado São Braz, foto 9" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb10.png" data-caption="Mercado São Braz — 17/11/2026 — foto 10"><img src="img/msb10.png" alt="Mercado São Braz, foto 10" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb11.png" data-caption="Mercado São Braz — 17/11/2026 — foto 11"><img src="img/msb11.png" alt="Mercado São Braz, foto 11" loading="lazy"></button>
+        <button class="photo-thumb" type="button" data-photo="img/msb12.png" data-caption="Mercado São Braz — 17/11/2026 — foto 12"><img src="img/msb12.png" alt="Mercado São Braz, foto 12" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+  </section>
+
+  <section id="outras-atracoes-belem" class="day-section">
+    <h2>Outras atrações em Belém — datas não especificadas no roteiro</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+
+    <article class="place-section">
+    <h3 id="historia-ilha-combu">Ilha do Combu</h3>
+    <p>Fica a 15 minutos de barco de Belém; ótima para comer peixe fresco e visitar fábricas de chocolate artesanal.</p>
+    <p>A Ilha do Combu integra uma Área de Proteção Ambiental criada para preservar os ecossistemas de várzea. Suas comunidades ribeirinhas mantêm tradições ligadas à pesca, ao extrativismo e ao cultivo de cacau e açaí. Passeios pelos igarapés, visitas a produtores artesanais de chocolate e restaurantes às margens dos rios oferecem contato com a floresta e com o modo de vida local.</p>
+
+    <h4>Como Funciona a Travessia</h4>
+    <ul>
+      <li><strong>Ponto de partida:</strong> Praça Princesa Isabel (no bairro da Condor), especificamente no Terminal Hidroviário Ruy Barata.</li>
+      <li><strong>Horário de funcionamento:</strong> Geralmente das 9h às 19h (com embarque para retorno ou trechos noturnos encerrando mais cedo, por volta das 16h/17h).</li>
+      <li><strong>Custo da passagem:</strong> Aproximadamente R$ 12,00 a ida e R$ 12,00 a volta (R$ 24,00 no total), sujeito a pequenas variações dependendo da cooperativa. É recomendado levar dinheiro em espécie e trocado.</li>
+      <li><strong>Saída das embarcações:</strong> Os barcos costumam sair ao completar um número mínimo de passageiros (cerca de 5 pessoas) ou após um breve tempo de espera (cerca de 15 minutos).</li>
+    </ul>
+
+    <h4>O que fazer na Ilha</h4>
+    <ul>
+      <li><strong>Gastronomia ribeirinha:</strong> Almoçar em restaurantes tradicionais às margens dos rios e igarapés (como Saldosa Maloca, Flor do Combu ou Chalé da Ilha), experimentando pratos típicos como tambaqui assado, camarão e caldos.</li>
+      <li><strong>Chocolate artesanal:</strong> Visitar a Filha do Combu (casa de chocolate da Dona Nena) para conhecer a produção de chocolate orgânico feito com cacau nativo da Amazônia.</li>
+      <li><strong>Trilhas e banho de rio:</strong> Aproveitar os igarapés para se refrescar e fazer pequenas trilhas pela vegetação local.</li>
+    </ul>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-ilha-combu">Galeria da Ilha do Combu</h4>
+    <div class="photo-gallery" aria-label="Fotos da Ilha do Combu">
+      <button class="photo-thumb" type="button" data-photo="img/ic1.png" data-caption="Ilha do Combu — foto 1"><img src="img/ic1.png" alt="Ilha do Combu, foto 1" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic2.png" data-caption="Ilha do Combu — foto 2"><img src="img/ic2.png" alt="Ilha do Combu, foto 2" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic3.png" data-caption="Ilha do Combu — foto 3"><img src="img/ic3.png" alt="Ilha do Combu, foto 3" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic4.png" data-caption="Ilha do Combu — foto 4"><img src="img/ic4.png" alt="Ilha do Combu, foto 4" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic5.png" data-caption="Ilha do Combu — foto 5"><img src="img/ic5.png" alt="Ilha do Combu, foto 5" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic6.png" data-caption="Ilha do Combu — foto 6"><img src="img/ic6.png" alt="Ilha do Combu, foto 6" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic7.png" data-caption="Ilha do Combu — foto 7"><img src="img/ic7.png" alt="Ilha do Combu, foto 7" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic8.png" data-caption="Ilha do Combu — foto 8"><img src="img/ic8.png" alt="Ilha do Combu, foto 8" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic9.png" data-caption="Ilha do Combu — foto 9"><img src="img/ic9.png" alt="Ilha do Combu, foto 9" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic10.png" data-caption="Ilha do Combu — foto 10"><img src="img/ic10.png" alt="Ilha do Combu, foto 10" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic11.png" data-caption="Ilha do Combu — foto 11"><img src="img/ic11.png" alt="Ilha do Combu, foto 11" loading="lazy"></button>
+      <button class="photo-thumb" type="button" data-photo="img/ic12.png" data-caption="Ilha do Combu — foto 12"><img src="img/ic12.png" alt="Ilha do Combu, foto 12" loading="lazy"></button>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3 id="historia-parque-utinga">Parque Estadual do Utinga</h3>
+    <p>Área verde gigante perfeita para trilhas, passeios de bicicleta e contato direto com a floresta.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    <h4 id="fotos-parque-utinga">Fotos do Parque Estadual do Utinga</h4>
+    <p class="photo-empty">Nenhuma imagem do Parque Estadual do Utinga foi adicionada à galeria ainda.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="place-section">
+    <h3>Gastronomia local</h3>
+    <p>Prove pratos com açaí original, tucupi, jambu e maniçoba e finalize com um sorvete de fruta regional.</p>
+    </article>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="comidas-paraenses" class="day-section food-section">
+    <h2>As 10 comidas típicas mais famosas do Pará</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>A culinária paraense é uma das mais autênticas do Brasil, resultado de influências indígenas, portuguesas e amazônicas. Muitos pratos usam ingredientes nativos da floresta e preservam técnicas e sabores tradicionais.</p>
+
+    <article class="food-item">
+      <h3 id="historia-pato-tucupi">1. Pato no Tucupi</h3>
+      <div class="photo-gallery" id="fotos-pato-tucupi" aria-label="Fotos de pato no tucupi">
+        <button class="photo-thumb" type="button" data-photo="img/patonotucupi.png" data-caption="Pato no Tucupi"><img src="img/patonotucupi.png" alt="Pato no tucupi" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Considerado o prato mais tradicional do Pará, o <strong>pato no tucupi</strong> tem origem indígena. O tucupi é um caldo amarelo extraído da mandioca-brava, que passa por fermentação e cozimento para eliminar sua toxicidade. O pato é assado e depois cozido no tucupi com jambu, erva amazônica que provoca uma leve sensação de dormência na boca.</p>
+      <p><strong>Como é consumido:</strong> Tradicionalmente durante o Círio de Nazaré, em reuniões familiares e ocasiões especiais, acompanhado de arroz branco e farinha-d'água.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-tacaca">2. Tacacá</h3>
+      <div class="photo-gallery" id="fotos-tacaca" aria-label="Fotos de tacacá">
+        <button class="photo-thumb" type="button" data-photo="img/tacaca.png" data-caption="Tacacá"><img src="img/tacaca.png" alt="Tacacá servido em cuia" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Herança dos povos indígenas amazônicos, o <strong>tacacá</strong> é um dos símbolos gastronômicos de Belém. É preparado com tucupi, goma de mandioca, jambu e camarão seco, servido bem quente em uma cuia.</p>
+      <p><strong>Como é consumido:</strong> É encontrado principalmente no final da tarde e à noite, em barracas espalhadas pela cidade, como lanche ou refeição leve.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-manicoba">3. Maniçoba</h3>
+      <div class="photo-gallery" id="fotos-manicoba" aria-label="Fotos de maniçoba">
+        <button class="photo-thumb" type="button" data-photo="img/manicoba.png" data-caption="Maniçoba"><img src="img/manicoba.png" alt="Maniçoba paraense" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Frequentemente chamada de “feijoada paraense”, a <strong>maniçoba</strong> tem origem nos costumes indígenas. Seu ingrediente principal é a maniva, folha da mandioca triturada e cozida por cerca de sete dias para eliminar substâncias tóxicas; depois, são adicionadas carnes suínas e defumadas.</p>
+      <p><strong>Como é consumida:</strong> Principalmente durante o Círio de Nazaré e em grandes festas familiares, acompanhada de arroz branco.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-acai-paraense">4. Açaí Paraense</h3>
+      <div class="photo-gallery" id="fotos-acai-paraense" aria-label="Fotos de açaí paraense">
+        <button class="photo-thumb" type="button" data-photo="img/acaiparaense.png" data-caption="Açaí Paraense"><img src="img/acaiparaense.png" alt="Açaí paraense tradicional" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Diferente da versão popularizada em outras regiões, o <strong>açaí paraense</strong> é consumido puro, sem açúcar, granola ou frutas. Na tradição amazônica, é um acompanhamento para refeições salgadas.</p>
+      <p><strong>Como é consumido:</strong> Servido com peixe frito, camarão, charque, carne seca, farinha de mandioca ou farinha de tapioca.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-caruru-paraense">5. Caruru Paraense</h3>
+      <div class="photo-gallery" id="fotos-caruru-paraense" aria-label="Fotos de caruru paraense">
+        <button class="photo-thumb" type="button" data-photo="img/caruruparaense.png" data-caption="Caruru Paraense"><img src="img/caruruparaense.png" alt="Caruru paraense" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Com características próprias, o <strong>caruru paraense</strong> utiliza quiabo, camarão seco e temperos regionais, reunindo influências indígenas e portuguesas.</p>
+      <p><strong>Como é consumido:</strong> Geralmente acompanha peixes, arroz e outros pratos típicos em festividades religiosas e eventos familiares.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-filhote-brasa">6. Filhote na Brasa</h3>
+      <div class="photo-gallery" id="fotos-filhote-brasa" aria-label="Fotos de filhote na brasa">
+        <button class="photo-thumb" type="button" data-photo="img/filhotenabrasa.png" data-caption="Filhote na Brasa"><img src="img/filhotenabrasa.png" alt="Filhote assado na brasa" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Um dos maiores peixes de água doce da Amazônia, o <strong>filhote</strong> é apreciado por sua carne macia e sabor suave. Pode ser grelhado ou assado na brasa.</p>
+      <p><strong>Como é consumido:</strong> Acompanhado de arroz, vinagrete, farinha e açaí.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-caldeirada-paraense">7. Caldeirada Paraense</h3>
+      <div class="photo-gallery" id="fotos-caldeirada-paraense" aria-label="Fotos de caldeirada paraense">
+        <button class="photo-thumb" type="button" data-photo="img/caldeiradaparaense.png" data-caption="Caldeirada Paraense"><img src="img/caldeiradaparaense.png" alt="Caldeirada paraense de peixe" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Introduzida pelos portugueses e transformada com ingredientes amazônicos, a <strong>caldeirada paraense</strong> é preparada com peixes regionais, como filhote, pescada-amarela ou dourada, além de legumes, ervas e temperos locais.</p>
+      <p><strong>Como é consumida:</strong> Servida no almoço ou jantar, acompanhada de arroz branco e farinha de mandioca.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-vatapa-paraense">8. Vatapá Paraense</h3>
+      <div class="photo-gallery" id="fotos-vatapa-paraense" aria-label="Fotos de vatapá paraense">
+        <button class="photo-thumb" type="button" data-photo="img/vatapaparaense.png" data-caption="Vatapá Paraense"><img src="img/vatapaparaense.png" alt="Vatapá paraense" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Diferente do vatapá baiano, a versão paraense não utiliza azeite de dendê. É feita com pão, leite de coco, camarão seco e temperos regionais, resultando em um prato mais claro e de sabor suave.</p>
+      <p><strong>Como é consumido:</strong> Frequentemente servido com arroz branco, peixes ou em festividades religiosas.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-chibe">9. Chibé</h3>
+      <div class="photo-gallery" id="fotos-chibe" aria-label="Fotos de chibé">
+        <button class="photo-thumb" type="button" data-photo="img/chibe.png" data-caption="Chibé"><img src="img/chibe.png" alt="Chibé, preparação de farinha de mandioca com água" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Uma das preparações mais antigas da Amazônia, o <strong>chibé</strong> surgiu entre os povos indígenas. Consiste na mistura de farinha de mandioca com água fresca, formando uma refeição simples, nutritiva e refrescante.</p>
+      <p><strong>Como é consumido:</strong> Muito comum em comunidades ribeirinhas, junto com peixe assado, camarão ou carnes salgadas.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-bolo-macaxeira">10. Bolo de Macaxeira</h3>
+      <div class="photo-gallery" id="fotos-bolo-macaxeira" aria-label="Fotos de bolo de macaxeira">
+        <button class="photo-thumb" type="button" data-photo="img/bolodemacaxeira.png" data-caption="Bolo de Macaxeira"><img src="img/bolodemacaxeira.png" alt="Bolo de macaxeira" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p>Também conhecido como bolo de mandioca, o <strong>bolo de macaxeira</strong> é uma sobremesa tradicional. O preparo leva macaxeira ralada, leite de coco, manteiga e açúcar.</p>
+      <p><strong>Como é consumido:</strong> No café da manhã, no lanche da tarde ou com café em reuniões familiares.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <article class="food-item">
+      <h3 id="historia-peixe-acai">Peixe Frito com Açaí</h3>
+      <div class="photo-gallery" id="fotos-peixe-acai" aria-label="Fotos de peixe frito com açaí">
+        <button class="photo-thumb" type="button" data-photo="img/peixefritocomacai.png" data-caption="Peixe Frito com Açaí"><img src="img/peixefritocomacai.png" alt="Peixe frito servido com açaí e farinha" loading="lazy"></button>
+      </div>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <p><strong>Peixe frito com açaí</strong> é uma das combinações mais tradicionais e consumidas do Pará. Peixes regionais como pescada-amarela, filhote, dourada, tambaqui, pescada-branca e piramutaba são servidos com açaí puro, farinha-d'água ou farinha de tapioca, arroz branco e, em algumas versões, vinagrete.</p>
+      <p>O açaí paraense não é uma sobremesa: é um alimento que acompanha peixes e farinha. A combinação do sabor salgado do peixe com o leve amargor do açaí é marcante na culinária local.</p>
+      <p><strong>Como é consumido:</strong> O mais tradicional é provar primeiro um pedaço de peixe frito e, em seguida, tomar uma colherada de açaí puro. A farinha acompanha cada garfada, criando o contraste característico entre o salgado do peixe e o sabor marcante do açaí. Algumas pessoas também gostam de mergulhar o peixe no açaí servido à parte, mas essa é uma variação menos comum.</p>
+      <p>O costume, presente nas refeições de Belém, das ilhas e de comunidades ribeirinhas, expressa a identidade alimentar amazônica. Em muitas casas, a refeição tradicional combina açaí, peixe frito e farinha de mandioca.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+
+    <div class="food-curiosity">
+      <h3>Curiosidade sobre a culinária paraense</h3>
+      <p>Cinco ingredientes fundamentais da cozinha do Pará são o <strong>tucupi</strong>, o <strong>jambu</strong>, a <strong>mandioca</strong>, o <strong>açaí</strong> e os <strong>peixes amazônicos</strong>. Eles ajudam a criar sabores ligados à história e à cultura da região.</p>
+    </div>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- DIA 18/11 -->
+  <section id="dia18" class="day-section">
+    <h2>DIA 18/11/2026 (Quarta-feira)</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>Saída de Belém (<strong>13:15h</strong>) para Santarém (<strong>14:40h</strong>) e depois Alter do Chão.</p>
+    <p>Do aeroporto checar preço do <strong>Uber</strong> e <strong>Urbano Norte</strong>.</p>
+    <p><strong>Pousada Sombra do Jambeiro</strong> (Travessa Antonio Alves, 492).</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- DIAS 19 a 23/11 -->
+  <section id="alter-19" class="day-section">
+    <h2>DIA 19/11/2026 (Quinta-feira) — Alter do Chão</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Hospedagem de 19 a 23/11:</strong> Casa Ybirá (Travessa Febrõnio Batista Costa, 100).</p>
+    <p><strong>Passeios:</strong> Pérola Ecotur.</p>
+    <p>Roteiro de Praias — <strong>10h</strong></p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="alter-20" class="day-section">
+    <h2>DIA 20/11/2026 (Sexta-feira) — Alter do Chão</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Passeios:</strong> Pérola Ecotur.</p>
+    <p>Rio Arapiuns — <strong>9h</strong></p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="alter-21" class="day-section">
+    <h2>DIA 21/11/2026 (Sábado) — Alter do Chão</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p><strong>Passeios:</strong> Pérola Ecotur.</p>
+    <p>Encontro das Águas — <strong>9h</strong></p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="alter-22" class="day-section">
+    <h2>DIA 22/11/2026 (Domingo) — Alter do Chão</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>Dia livre. Sugestão: Ilha do Amor.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <section id="alter-23" class="day-section">
+    <h2>DIA 23/11/2026 (Segunda-feira) — Santarém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>Saída para Santarém. <strong>Kitnet</strong> (Travessa Barjonas de Miranda, s/n ?)</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- SANTARÉM -->
+  <section id="santarem" class="day-section">
+    <h2>Pontos Turísticos na Cidade de Santarém</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+
+    <article class="place-section">
+      <h3 id="historia-santarem-orla">Orla de Santarém (Avenida Tapajós)</h3>
+      <p>Principal cartão-postal da cidade, ideal para caminhadas, apreciar o pôr do sol e ver o visual da região.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-santarem-orla">Fotos da Orla de Santarém</h4>
+      <p class="photo-empty">Nenhuma imagem da Orla de Santarém foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-encontro-aguas">Encontro das Águas</h3>
+      <p>O espetáculo natural onde as águas barrentas do Rio Amazonas e as águas escuras/azuladas do Rio Tapajós correm juntas sem se misturar por quilômetros (pode ser visto da orla, de mirantes ou em passeios de barco).</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-encontro-aguas">Fotos do Encontro das Águas</h4>
+      <p class="photo-empty">Nenhuma imagem do Encontro das Águas foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-praca-fortaleza">Praça Fortaleza do Tapajós (Mirante)</h3>
+      <p>Localizada na Rua Adriano Pimentel, oferece uma vista panorâmica para o rio e conta com espaço de convivência.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-praca-fortaleza">Fotos da Praça Fortaleza do Tapajós</h4>
+      <p class="photo-empty">Nenhuma imagem da Praça Fortaleza do Tapajós foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-centro-cultural-joao-fona">Centro Cultural João Fona</h3>
+      <p>Prédio histórico que abriga exposições de arqueologia, peças de cerâmica tapajônica e a história local.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-centro-cultural-joao-fona">Fotos do Centro Cultural João Fona</h4>
+      <p class="photo-empty">Nenhuma imagem do Centro Cultural João Fona foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-centro-artesanato-tapajos">Centro de Artesanato do Tapajós – Cristo Rei</h3>
+      <p>Ótimo para comprar lembrancinhas e artesanatos regionais, além de possuir um mirante com vista para a confluência dos rios.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-centro-artesanato-tapajos">Fotos do Centro de Artesanato do Tapajós</h4>
+      <p class="photo-empty">Nenhuma imagem do Centro de Artesanato do Tapajós foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-parque-cidade">Parque da Cidade</h3>
+      <p>Espaço verde com pistas de caminhada, ciclovia, playground, complexo esportivo e o Espaço Pet.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-parque-cidade">Fotos do Parque da Cidade</h4>
+      <p class="photo-empty">Nenhuma imagem do Parque da Cidade foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <article class="place-section">
+      <h3 id="historia-praia-maracana">Praia do Maracanã</h3>
+      <p>Localizada a poucos minutos do centro, ideal para almoçar peixes regionais em quiosques à beira do rio.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+      <h4 id="fotos-praia-maracana">Fotos da Praia do Maracanã</h4>
+      <p class="photo-empty">Nenhuma imagem da Praia do Maracanã foi adicionada à galeria ainda.</p>
+      <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+    </article>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+  <!-- DIA 25/11 -->
+  <section id="dia25" class="destaque day-section">
+    <h2>DIA 25/11/2026 (Quarta-feira)</h2>
+    <a href="#indice-topo" class="btn-return btn-return-top">🔙 Voltar ao resumo do roteiro</a>
+    <p>Saída <strong>STM (00:45h)</strong> para <strong>VCP (7:15h)</strong>.</p>
+    <a href="#indice-topo" class="btn-return">🔙 Voltar ao resumo do roteiro</a>
+  </section>
+
+</main>
+
+<footer>
+  Roteiro Belém — documento completo, sem omissões.
+</footer>
+
+<dialog class="photo-viewer" aria-label="Visualizador de fotos">
+  <button class="viewer-button viewer-close" type="button" aria-label="Fechar visualizador">×</button>
+  <button class="viewer-button viewer-prev" type="button" aria-label="Foto anterior">‹</button>
+  <button class="viewer-button viewer-next" type="button" aria-label="Próxima foto">›</button>
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <p class="viewer-position" aria-live="polite"></p>
+</dialog>
+
+<script>
+  const topButton = document.getElementById("btn-top");
+  window.addEventListener("scroll", () => {
+    topButton.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  topButton.addEventListener("click", () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
+
+  let photoButtons = [...document.querySelectorAll(".photo-thumb")].sort((first, second) => {
+    const dateFromCaption = button => {
+      const [, day, month, year] = button.dataset.caption.match(/(\d{2})\/(\d{2})\/(\d{4})/) || [];
+      return year ? `${year}-${month}-${day}` : "";
+    };
+    return dateFromCaption(first).localeCompare(dateFromCaption(second));
+  });
+  const viewer = document.querySelector(".photo-viewer");
+  const viewerImage = viewer.querySelector("img");
+  const viewerCaption = viewer.querySelector("figcaption");
+  const viewerPosition = viewer.querySelector(".viewer-position");
+  let currentPhoto = 0;
+
+  document.querySelectorAll(".food-item").forEach(foodItem => {
+    const title = foodItem.querySelector("h3");
+    const photoTitle = foodItem.querySelector('h4[id^="fotos-"]');
+    const gallery = foodItem.querySelector(".photo-gallery");
+    if (!title || !gallery) {
+      throw new Error("A comida típica precisa de título e galeria para montar o layout.");
+    }
+
+    const photoReturn = gallery.nextElementSibling;
+    const layout = document.createElement("div");
+    layout.className = "food-layout";
+    const photoColumn = document.createElement("div");
+    photoColumn.className = "food-photo";
+    if (photoTitle) photoColumn.append(photoTitle);
+    photoColumn.append(gallery);
+    if (photoReturn && photoReturn.matches(".btn-return")) {
+      photoColumn.append(photoReturn);
+    }
+
+    const description = document.createElement("div");
+    description.className = "food-description";
+    [...foodItem.children].forEach(child => {
+      if (child !== title && child !== photoTitle && child !== gallery && child !== photoReturn) {
+        description.append(child);
+      }
+    });
+    layout.append(photoColumn, description);
+    foodItem.append(layout);
+  });
+
+  document.querySelectorAll(".photo-gallery").forEach(gallery => {
+    const carousel = document.createElement("div");
+    carousel.className = "photo-carousel";
+    gallery.parentNode.insertBefore(carousel, gallery);
+    carousel.appendChild(gallery);
+
+    const previousPreview = document.createElement("button");
+    previousPreview.type = "button";
+    previousPreview.className = "photo-preview photo-preview-prev";
+    previousPreview.setAttribute("aria-label", "Selecionar foto anterior");
+    previousPreview.innerHTML = '<img alt="">';
+
+    const nextPreview = document.createElement("button");
+    nextPreview.type = "button";
+    nextPreview.className = "photo-preview photo-preview-next";
+    nextPreview.setAttribute("aria-label", "Selecionar próxima foto");
+    nextPreview.innerHTML = '<img alt="">';
+
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.className = "photo-carousel-control photo-carousel-prev";
+    previous.setAttribute("aria-label", "Foto anterior nesta galeria");
+    previous.textContent = "‹";
+
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "photo-carousel-control photo-carousel-next";
+    next.setAttribute("aria-label", "Próxima foto nesta galeria");
+    next.textContent = "›";
+
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "photo-empty";
+    emptyMessage.hidden = true;
+    emptyMessage.textContent = "As imagens desta galeria não foram encontradas na pasta img/.";
+    carousel.insertBefore(previousPreview, gallery);
+    carousel.insertBefore(nextPreview, gallery.nextSibling);
+    carousel.append(previous, next, emptyMessage);
+
+    let photos = [...gallery.querySelectorAll(".photo-thumb")];
+    let activeIndex = 0;
+    let isVisible = false;
+    let isPaused = false;
+
+    function activatePhoto(index) {
+      activeIndex = (index + photos.length) % photos.length;
+      const previousIndex = (activeIndex - 1 + photos.length) % photos.length;
+      const nextIndex = (activeIndex + 1) % photos.length;
+      photos.forEach((photo, photoIndex) => {
+        photo.classList.toggle("is-active", photoIndex === activeIndex);
+        photo.classList.toggle("is-prev", photos.length > 1 && photoIndex === previousIndex);
+        photo.classList.toggle("is-next", photos.length > 1 && photoIndex === nextIndex);
+      });
+
+      previousPreview.hidden = photos.length < 2;
+      nextPreview.hidden = photos.length < 2;
+      previous.hidden = photos.length < 2;
+      next.hidden = photos.length < 2;
+      if (photos.length > 1) {
+        const previousPhoto = photos[previousIndex];
+        const nextPhoto = photos[nextIndex];
+        const previousImage = previousPreview.querySelector("img");
+        const nextImage = nextPreview.querySelector("img");
+        previousImage.src = previousPhoto.querySelector("img").src;
+        previousImage.alt = previousPhoto.querySelector("img").alt;
+        nextImage.src = nextPhoto.querySelector("img").src;
+        nextImage.alt = nextPhoto.querySelector("img").alt;
+        previousPreview.setAttribute("aria-label", `Selecionar foto anterior: ${previousPhoto.dataset.caption}`);
+        nextPreview.setAttribute("aria-label", `Selecionar próxima foto: ${nextPhoto.dataset.caption}`);
+      }
+    }
+
+    if (photos.length) {
+      activatePhoto(0);
+      previous.addEventListener("click", () => activatePhoto(activeIndex - 1));
+      next.addEventListener("click", () => activatePhoto(activeIndex + 1));
+      previousPreview.addEventListener("click", () => activatePhoto(activeIndex - 1));
+      nextPreview.addEventListener("click", () => activatePhoto(activeIndex + 1));
+
+      photos.forEach(photo => {
+        const image = photo.querySelector("img");
+        const imagePath = photo.dataset.photo;
+        const imageStem = imagePath.replace(/\.[^.]+$/, "");
+        const fallbackSources = [".jpg", ".jpeg", ".webp"].map(extension => imageStem + extension);
+        let fallbackIndex = 0;
+        image.addEventListener("error", () => {
+          if (fallbackIndex < fallbackSources.length) {
+            photo.dataset.photo = fallbackSources[fallbackIndex];
+            image.src = fallbackSources[fallbackIndex];
+            activatePhoto(activeIndex);
+            fallbackIndex += 1;
+            return;
+          }
+          photo.classList.add("photo-missing");
+          photoButtons = photoButtons.filter(item => item !== photo);
+          photos = photos.filter(item => item !== photo);
+          if (!photos.length) {
+            emptyMessage.hidden = false;
+            previousPreview.hidden = true;
+            nextPreview.hidden = true;
+            previous.hidden = true;
+            next.hidden = true;
+            previous.disabled = true;
+            next.disabled = true;
+          } else {
+            activeIndex = activeIndex % photos.length;
+            activatePhoto(activeIndex);
+          }
+        });
+      });
+
+      const autoplay = window.setInterval(() => {
+        if (isVisible && !isPaused && !document.hidden &&
+            !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          activatePhoto(activeIndex + 1);
+        }
+      }, 2400);
+
+      carousel.addEventListener("mouseenter", () => { isPaused = true; });
+      carousel.addEventListener("mouseleave", () => { isPaused = false; });
+      carousel.addEventListener("focusin", () => { isPaused = true; });
+      carousel.addEventListener("focusout", event => {
+        if (!carousel.contains(event.relatedTarget)) isPaused = false;
+      });
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+          });
+        }, { threshold: 0.35 });
+        observer.observe(carousel);
+      } else {
+        isVisible = true;
+      }
+
+      window.addEventListener("pagehide", () => window.clearInterval(autoplay), { once: true });
+    } else {
+      emptyMessage.hidden = false;
+      previousPreview.hidden = true;
+      nextPreview.hidden = true;
+      previous.disabled = true;
+      next.disabled = true;
+    }
+  });
+
+  function showPhoto(index) {
+    if (!photoButtons.length) return;
+    currentPhoto = (index + photoButtons.length) % photoButtons.length;
+    const photo = photoButtons[currentPhoto];
+    viewerImage.src = photo.dataset.photo;
+    viewerImage.alt = photo.querySelector("img").alt;
+    viewerImage.classList.remove("zoomed");
+    viewerCaption.textContent = photo.dataset.caption;
+    viewerPosition.textContent = `${currentPhoto + 1} / ${photoButtons.length}`;
+  }
+
+  photoButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const availableIndex = photoButtons.indexOf(button);
+      if (availableIndex < 0) return;
+      showPhoto(availableIndex);
+      viewer.showModal();
+    });
+  });
+
+  viewer.querySelector(".viewer-close").addEventListener("click", () => viewer.close());
+  viewer.querySelector(".viewer-prev").addEventListener("click", () => showPhoto(currentPhoto - 1));
+  viewer.querySelector(".viewer-next").addEventListener("click", () => showPhoto(currentPhoto + 1));
+  viewerImage.addEventListener("click", () => viewerImage.classList.toggle("zoomed"));
+  viewer.addEventListener("click", event => {
+    if (event.target === viewer) viewer.close();
+  });
+  viewer.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") showPhoto(currentPhoto - 1);
+    if (event.key === "ArrowRight") showPhoto(currentPhoto + 1);
+    if (event.key === "Escape") viewer.close();
+  });
+</script>
+
+</body>
+</html>
