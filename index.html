@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roteiro Belém — Guia Completo</title>
+<title>Roteiro Voando pro Pará — Guia Completo</title>
 <style>
   :root{
     --verde:#1f6f54;
@@ -218,6 +218,73 @@
     text-shadow:2px 2px 4px rgba(0,0,0,.3);
   }
   header p{font-size:1.1rem;color:#e8f4ef;margin:8px 0 20px;}
+  .hero-visual{
+    position:relative;
+    display:grid;
+    width:min(280px,72vw);
+    aspect-ratio:1.25;
+    place-items:center;
+    margin:0 auto 28px;
+    isolation:isolate;
+  }
+  .hero-visual img{
+    display:block;
+    width:72%;
+    height:76%;
+    object-fit:contain;
+    filter:drop-shadow(0 10px 22px rgba(0,0,0,.4));
+  }
+  .hero-orbit{
+    position:absolute;
+    inset:9%;
+    z-index:-1;
+    border:5px solid transparent;
+    border-radius:22px;
+    background:
+      linear-gradient(#10251f,#10251f) padding-box,
+      conic-gradient(from 0deg,#00ffd5,#4ea8ff,#d95dff,#ffbd4a,#00ffd5) border-box;
+    box-shadow:0 0 18px rgba(0,255,213,.55),inset 0 0 14px rgba(255,255,255,.16);
+    animation:hero-orbit-clockwise 9s linear infinite;
+  }
+  .hero-orbit--reverse{
+    inset:1%;
+    border-width:6px;
+    border-radius:28px;
+    background:
+      linear-gradient(#10251f,#10251f) padding-box,
+      conic-gradient(from 180deg,#ff4fc3,#ffb52e,#69f0ae,#5c8dff,#ff4fc3) border-box;
+    box-shadow:0 0 22px rgba(255,79,195,.48),inset 0 0 16px rgba(255,255,255,.12);
+    animation:hero-orbit-counterclockwise 13s linear infinite;
+  }
+  @keyframes hero-orbit-clockwise{
+    to{transform:rotate(360deg);}
+  }
+  @keyframes hero-orbit-counterclockwise{
+    to{transform:rotate(-360deg);}
+  }
+  #btn-music-floating{
+    position:fixed;
+    right:24px;
+    bottom:82px;
+    z-index:101;
+    min-height:48px;
+    padding:0 18px;
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:24px;
+    background:#0d9488;
+    box-shadow:0 4px 15px rgba(0,0,0,.3),0 0 14px rgba(13,148,136,.35);
+    color:#fff;
+    font:700 .9rem "Segoe UI",Roboto,Arial,sans-serif;
+    cursor:pointer;
+    transition:background .2s ease,transform .2s ease;
+  }
+  #btn-music-floating:hover{background:#08786f;transform:translateY(-2px);}
+  #btn-music-floating:focus-visible{outline:3px solid #99f6e4;outline-offset:3px;}
+  #btn-music-floating[aria-pressed="true"]{background:#b5651d;}
+  #btn-music-floating:disabled{cursor:not-allowed;opacity:.72;}
+  @media(prefers-reduced-motion:reduce){
+    .hero-orbit{animation:none;}
+  }
   .header-table-container{
     max-width:1200px;
     margin:0 auto;
@@ -591,15 +658,23 @@
     section{padding:16px;}
     .nav-container{padding:10px;}
     #btn-return-floating{right:14px;bottom:14px;height:44px;padding:0 14px;font-size:.82rem;}
+    #btn-music-floating{right:14px;bottom:70px;min-height:44px;padding:0 14px;font-size:.82rem;}
   }
 </style>
 </head>
 <body>
 
 <a id="btn-return-floating" href="#indice-topo" aria-label="Voltar ao resumo do roteiro">Voltar ao resumo</a>
+<audio id="background-music" src="song/song.mp3" autoplay loop preload="auto"></audio>
+<button id="btn-music-floating" type="button" aria-pressed="false" aria-label="Ativar música de fundo">♪ Ativar música</button>
 
 <header id="indice-topo">
-  <h1>ROTEIRO PARÁ</h1>
+  <div class="hero-visual" aria-label="Imagem principal: Voando pro Pará" role="img">
+    <span class="hero-orbit hero-orbit--reverse" aria-hidden="true"></span>
+    <span class="hero-orbit" aria-hidden="true"></span>
+    <img src="img/voando.png" alt="">
+  </div>
+  <h1>ROTEIRO VOANDO PRO PARÁ</h1>
   <p>Guia completo — 11/11/2026 a 25/11/2026</p>
   <div class="header-table-container">
     <h2>Resumo do roteiro <span>(selecione um destino para navegar)</span></h2>
@@ -1499,6 +1574,46 @@
   };
   window.addEventListener("scroll", updateReturnButton);
   updateReturnButton();
+
+  const backgroundMusic = document.getElementById("background-music");
+  const musicButton = document.getElementById("btn-music-floating");
+  const updateMusicButton = isPlaying => {
+    const isUnavailable = Boolean(backgroundMusic.error);
+    const isActive = isPlaying && !isUnavailable;
+    musicButton.setAttribute("aria-pressed", String(isActive));
+    musicButton.textContent = isUnavailable
+      ? "Áudio indisponível"
+      : isActive ? "♫ Pausar música" : "♪ Ativar música";
+    musicButton.setAttribute(
+      "aria-label",
+      isUnavailable
+        ? "Arquivo de música indisponível"
+        : isActive ? "Desativar música de fundo" : "Ativar música de fundo"
+    );
+    musicButton.disabled = isUnavailable;
+  };
+  backgroundMusic.addEventListener("play", () => updateMusicButton(true));
+  backgroundMusic.addEventListener("pause", () => updateMusicButton(false));
+  const markAudioUnavailable = () => {
+    updateMusicButton(false);
+  };
+  backgroundMusic.addEventListener("error", markAudioUnavailable);
+  musicButton.addEventListener("click", () => {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play().catch(() => updateMusicButton(false));
+    } else {
+      backgroundMusic.pause();
+    }
+  });
+  if (backgroundMusic.error) {
+    markAudioUnavailable();
+  } else {
+    backgroundMusic.play().then(() => {
+      updateMusicButton(true);
+    }).catch(() => {
+      updateMusicButton(false);
+    });
+  }
 
   document.querySelectorAll(".photo-gallery").forEach(gallery => {
     const existingPhotos = [...gallery.querySelectorAll(".photo-thumb")];
