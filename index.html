@@ -468,93 +468,56 @@
   .card{background:#f8fafc;border-color:#e2e8f0;}
   .photo-gallery{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));}
   .photo-thumb{box-shadow:0 4px 10px rgba(0,0,0,.1);}
-  .photo-carousel{
+  .photo-mosaic{
     position:relative;
-    display:grid;
-    grid-template-columns:minmax(90px,1fr) minmax(0,3.2fr) minmax(90px,1fr);
-    align-items:center;
-    gap:12px;
     margin:12px 0 24px;
-    padding:0 8px;
+    overflow:visible;
   }
   .photo-gallery{
     display:grid;
-    grid-column:2;
-    grid-template-columns:minmax(0,1fr);
+    grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr));
+    gap:12px;
+    width:100%;
     min-width:0;
-    width:fit-content;
-    max-width:100%;
-    justify-self:center;
     margin:0;
     padding:0;
-    overflow:visible;
   }
   .photo-thumb{
-    display:none;
+    position:relative;
+    display:block;
     width:100%;
-    height:auto;
     max-width:none;
-    opacity:1;
-    transition:opacity .25s ease,transform .25s ease;
+    padding:0;
+    overflow:hidden;
+    border:2px solid transparent;
+    border-radius:10px;
+    background:#e2e8f0;
+    opacity:.86;
+    cursor:zoom-in;
+    transform:scale(.97);
+    transition:opacity .3s ease,transform .3s ease,border-color .3s ease,box-shadow .3s ease;
   }
-  .photo-thumb.is-active{
-    display:block;
-    grid-column:1;
-    justify-self:center;
-    width:fit-content;
-    max-width:100%;
-    height:auto;
-    opacity:1;
-    box-shadow:0 8px 22px rgba(31,111,84,.28);
-  }
-  .photo-thumb.is-active img{
-    width:auto;
-    height:auto;
-    max-width:100%;
-    max-height:min(60vh,520px);
-    object-fit:contain;
-    object-position:center;
-    background:transparent;
-  }
-  .photo-preview{
+  .photo-thumb img{
     display:block;
     width:100%;
-    max-width:180px;
+    height:auto;
     aspect-ratio:4/3;
-    justify-self:center;
-    overflow:hidden;
-    padding:0;
-    border:0;
-    border-radius:8px;
-    background:#eee;
-    box-shadow:0 4px 10px rgba(0,0,0,.12);
-    opacity:.68;
-    cursor:pointer;
-    transition:opacity .2s ease,transform .2s ease;
+    object-fit:cover;
+    transition:transform .35s ease;
   }
-  .photo-preview:hover{opacity:1;transform:scale(1.04);}
-  .photo-preview[hidden]{display:none;}
-  .photo-preview img{display:block;width:100%;height:100%;object-fit:cover;}
-  .photo-carousel-control{
-    position:absolute;
-    top:50%;
+  .photo-thumb.is-focus,
+  .photo-thumb:hover,
+  .photo-thumb:focus-visible{
     z-index:2;
-    display:grid;
-    width:38px;
-    height:38px;
-    place-items:center;
-    border:0;
-    border-radius:50%;
-    background:#1f6f54;
-    box-shadow:0 3px 10px rgba(0,0,0,.2);
-    color:white;
-    font-size:1.4rem;
-    cursor:pointer;
-    transform:translateY(-50%);
+    opacity:1;
+    border-color:#f0a94b;
+    box-shadow:0 10px 24px rgba(16,37,31,.32),0 0 16px rgba(240,169,75,.38);
+    transform:scale(1.045);
   }
-  .photo-carousel-control:hover{background:#b5651d;}
-  .photo-carousel-prev{left:calc(19.2% + 6px);}
-  .photo-carousel-next{right:calc(19.2% + 6px);}
+  .photo-thumb.is-focus img,
+  .photo-thumb:hover img,
+  .photo-thumb:focus-visible img{transform:scale(1.06);}
+  .photo-thumb:focus-visible{outline:3px solid #0d9488;outline-offset:3px;}
   .photo-empty{
     grid-column:1/-1;
     margin:0;
@@ -582,16 +545,11 @@
   }
   .food-item .food-photo h4{margin-top:0;}
   .food-item .food-description{min-width:0;}
-  .food-item .photo-carousel{
-    grid-template-columns:minmax(0,1fr);
+  .food-item .photo-mosaic{
     max-width:300px;
     margin:8px auto 12px;
-    padding:0;
   }
-  .food-item .photo-gallery{grid-column:1;}
-  .food-item .photo-preview,
-  .food-item .photo-carousel-control{display:none;}
-  .food-item .photo-thumb.is-active img{max-height:230px;}
+  .food-item .photo-gallery{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;}
   .food-item .food-description > p:first-child{margin-top:0;}
   .food-curiosity{
     padding:16px;
@@ -600,22 +558,13 @@
     background:#fff4e6;
   }
   @media(max-width:600px){
-    .photo-carousel{
-      grid-template-columns:minmax(48px,.65fr) minmax(0,3fr) minmax(48px,.65fr);
-      gap:8px;
-    }
-    .photo-gallery{padding:0;}
-    .photo-thumb.is-active img{max-height:min(56vh,420px);}
-    .photo-preview{max-width:110px;}
-    .photo-carousel-prev{left:calc(15.1% + 2px);}
-    .photo-carousel-next{right:calc(15.1% + 2px);}
-    .photo-carousel-control{width:32px;height:32px;font-size:1.15rem;}
+    .photo-gallery{grid-template-columns:repeat(auto-fill,minmax(min(125px,100%),1fr));gap:9px;}
     .food-item .food-layout{grid-template-columns:minmax(0,1fr);gap:8px;}
     .food-item .food-photo{width:min(100%,300px);margin:0 auto;}
     .food-item .food-photo h4{text-align:center;}
   }
   @media(prefers-reduced-motion:reduce){
-    .photo-thumb,.photo-preview{transition:none;}
+    .photo-thumb,.photo-thumb img{transition:none;}
   }
   #btn-return-floating{
     position:fixed;
@@ -754,13 +703,8 @@
         <ul class="resumo-list">
           <li class="border-orange"><div class="item-name"><span class="item-number">1</span><a href="#historia-santarem">Santarém</a></div><a class="btn-como-chegar" href="#fotos-santarem">Fotos</a></li>
           <li class="border-orange"><div class="item-name"><span class="item-number">2</span><a href="#historia-santarem-orla">Orla de Santarém</a></div><a class="btn-como-chegar" href="#fotos-santarem-orla">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">3</span><a href="#historia-encontro-aguas">Encontro das Águas em Santarém</a></div><a class="btn-como-chegar" href="#fotos-encontro-aguas">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">4</span><a href="#historia-praca-fortaleza">Praça Fortaleza do Tapajós</a></div><a class="btn-como-chegar" href="#fotos-praca-fortaleza">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">5</span><a href="#historia-centro-cultural-joao-fona">Centro Cultural João Fona</a></div><a class="btn-como-chegar" href="#fotos-centro-cultural-joao-fona">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">6</span><a href="#historia-centro-artesanato-tapajos">Centro de Artesanato do Tapajós</a></div><a class="btn-como-chegar" href="#fotos-centro-artesanato-tapajos">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">7</span><a href="#historia-parque-cidade">Parque da Cidade</a></div><a class="btn-como-chegar" href="#fotos-parque-cidade">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">8</span><a href="#historia-praia-maracana">Praia do Maracanã</a></div><a class="btn-como-chegar" href="#fotos-praia-maracana">Fotos</a></li>
-          <li class="border-orange"><div class="item-name"><span class="item-number">9</span><a href="#dia25">Retorno — 25/11</a></div><a class="btn-como-chegar" href="#dia25">Ver dia</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">3</span><a href="#historia-centro-cultural-joao-fona">Centro Cultural João Fona</a></div><a class="btn-como-chegar" href="#fotos-centro-cultural-joao-fona">Fotos</a></li>
+          <li class="border-orange"><div class="item-name"><span class="item-number">4</span><a href="#dia25">Retorno — 25/11</a></div><a class="btn-como-chegar" href="#dia25">Ver dia</a></li>
         </ul>
       </article>
     </div>
@@ -1381,6 +1325,16 @@
     <article class="place-section">
       <h3 id="historia-roteiro-praias">Roteiro de Praias</h3>
       <p>O passeio percorre praias fluviais de Alter do Chão, cujas faixas de areia aparecem com a baixa do Tapajós durante o verão amazônico. Entre os destaques estão os banhos de rio, a paisagem de areia branca e a vista para a floresta e para as comunidades da região.</p>
+      <h4>1ª Praia: Praia do Caxambú</h4>
+      <div class="photo-gallery" data-prefix="pcx" data-count="20" data-extension="png" aria-label="Fotos da Praia do Caxambú"></div>
+      <h4>2ª Praia: Praia Cajutuba</h4>
+      <div class="photo-gallery" data-prefix="pcj" data-count="20" data-extension="png" aria-label="Fotos da Praia Cajutuba"></div>
+      <h4>3ª Praia: Praia do Pindobal</h4>
+      <div class="photo-gallery" data-prefix="ppb" data-count="20" data-extension="png" aria-label="Fotos da Praia do Pindobal"></div>
+      <h4>4ª Praia: Praia do Muretá</h4>
+      <div class="photo-gallery" data-prefix="pmt" data-count="20" data-extension="png" aria-label="Fotos da Praia do Muretá"></div>
+      <h4>5ª Praia: Ponta do Jacaré</h4>
+      <div class="photo-gallery" data-prefix="pjr" data-count="20" data-extension="png" aria-label="Fotos da Ponta do Jacaré"></div>
       <h4 id="fotos-roteiro-praias">Fotos do Roteiro de Praias</h4>
       <div class="photo-gallery" data-prefix="rdp" aria-label="Fotos do Roteiro de Praias"></div>
     </article>
@@ -1399,6 +1353,12 @@
         <li>Visitas a comunidades indígenas e ribeirinhas e ao artesanato local.</li>
         <li>Trilhas na floresta e observação da biodiversidade amazônica.</li>
       </ul>
+      <h4>1ª Praia: Ponta do Toronó</h4>
+      <div class="photo-gallery" data-prefix="ptn" data-count="20" data-extension="png" aria-label="Fotos da Ponta do Toronó"></div>
+      <h4>2ª Praia: Comunidade Coróca</h4>
+      <div class="photo-gallery" data-prefix="ccc" data-count="20" data-extension="png" aria-label="Fotos da Comunidade Coróca"></div>
+      <h4>3ª Praia: Ponta do Cururú</h4>
+      <div class="photo-gallery" data-prefix="pcr" data-count="20" data-extension="png" aria-label="Fotos da Ponta do Cururú no Rio Arapiuns"></div>
       <h4 id="fotos-rio-arapiuns">Fotos do Rio Arapiuns</h4>
       <div class="photo-gallery" data-prefix="ra" aria-label="Fotos do Rio Arapiuns"></div>
     </article>
@@ -1416,6 +1376,14 @@
         <li>Passeios de lancha e voadeira para observar as diferentes tonalidades dos rios.</li>
         <li>Contemplação da paisagem amazônica e fotografia do encontro das águas.</li>
       </ul>
+      <h4>1ª Praia: Arariá</h4>
+      <div class="photo-gallery" data-prefix="paa" data-count="20" data-extension="png" aria-label="Fotos da Praia do Arariá"></div>
+      <h4>2ª Praia: Maria José</h4>
+      <div class="photo-gallery" data-prefix="pmj" data-count="20" data-extension="png" aria-label="Fotos da Praia Maria José"></div>
+      <h4>3ª Praia: Praia do Carapanari — Casa do Saulo Tapajós</h4>
+      <div class="photo-gallery" data-prefix="pcn" data-count="20" data-extension="png" aria-label="Fotos da Praia do Carapanari e Casa do Saulo Tapajós"></div>
+      <h4>4ª Praia: Ponta do Cururú</h4>
+      <div class="photo-gallery" data-prefix="pcru" data-count="20" data-extension="png" aria-label="Fotos da Ponta do Cururú no Encontro das Águas"></div>
       <h4 id="fotos-encontro-arapiuns-tapajos">Fotos do Encontro das Águas (Arapiuns e Tapajós)</h4>
       <div class="photo-gallery" data-prefix="eaac" aria-label="Fotos do encontro das águas dos rios Arapiuns e Tapajós"></div>
     </article>
@@ -1433,7 +1401,7 @@
         <li>Passeios de catraia, esportes aquáticos e contemplação do pôr do sol.</li>
       </ul>
       <h4 id="fotos-ilha-amor">Fotos da Ilha do Amor</h4>
-      <div class="photo-gallery" data-prefix="ida" aria-label="Fotos da Ilha do Amor"></div>
+      <div class="photo-gallery" data-prefix="ia" data-count="20" aria-label="Fotos da Ilha do Amor"></div>
     </article>
   </section>
 
@@ -1456,7 +1424,7 @@
         <li>Museus e sítios arqueológicos da cultura Tapajó.</li>
       </ul>
       <h4 id="fotos-santarem">Fotos de Santarém</h4>
-      <div class="photo-gallery" data-prefix="s" aria-label="Fotos de Santarém"></div>
+      <div class="photo-gallery" data-prefix="str" data-count="20" aria-label="Fotos de Santarém"></div>
     </article>
     <article class="place-section">
       <h3 id="historia-santarem-orla">Orla de Santarém (Avenida Tapajós)</h3>
@@ -1468,31 +1436,7 @@
         <li>Restaurantes, eventos culturais, monumentos e pôr do sol.</li>
       </ul>
       <h4 id="fotos-santarem-orla">Fotos da Orla de Santarém</h4>
-      <div class="photo-gallery" data-prefix="os" aria-label="Fotos da Orla de Santarém"></div>
-    </article>
-    <article class="place-section">
-      <h3 id="historia-encontro-aguas">Encontro das Águas em Santarém</h3>
-      <p>O espetáculo natural onde as águas barrentas do Rio Amazonas e as águas escuras/azuladas do Rio Tapajós correm juntas sem se misturar por quilômetros (pode ser visto da orla, de mirantes ou em passeios de barco).</p>
-      <p>O contraste entre as águas barrentas do Amazonas e as azul-esverdeadas do Tapajós forma um dos fenômenos naturais mais impressionantes da região.</p>
-      <h4>Principais atrações</h4>
-      <ul>
-        <li>Passeios de barco, observação do fenômeno e fotografia.</li>
-        <li>Vista da orla e de embarcações turísticas.</li>
-      </ul>
-      <h4 id="fotos-encontro-aguas">Fotos do Encontro das Águas</h4>
-      <div class="photo-gallery" data-prefix="eas" aria-label="Fotos do encontro das águas em Santarém"></div>
-    </article>
-    <article class="place-section">
-      <h3 id="historia-praca-fortaleza">Praça Fortaleza do Tapajós (Mirante)</h3>
-      <p>Localizada na Rua Adriano Pimentel, oferece uma vista panorâmica para o rio e conta com espaço de convivência.</p>
-      <p>Construída em uma área elevada, a praça homenageia a antiga fortificação que ajudou a consolidar a ocupação portuguesa na região.</p>
-      <h4>Principais atrações</h4>
-      <ul>
-        <li>Mirante panorâmico, vista do encontro dos rios e pôr do sol.</li>
-        <li>Espaço de convivência e local para fotografias.</li>
-      </ul>
-      <h4 id="fotos-praca-fortaleza">Fotos da Praça Fortaleza do Tapajós</h4>
-      <div class="photo-gallery" data-prefix="pft" aria-label="Fotos da Praça Fortaleza do Tapajós"></div>
+      <div class="photo-gallery" data-prefix="ostr" data-count="20" aria-label="Fotos da Orla de Santarém"></div>
     </article>
     <article class="place-section">
       <h3 id="historia-centro-cultural-joao-fona">Centro Cultural João Fona</h3>
@@ -1504,43 +1448,7 @@
         <li>Acervo fotográfico e documental e exposições temporárias.</li>
       </ul>
       <h4 id="fotos-centro-cultural-joao-fona">Fotos do Centro Cultural João Fona</h4>
-      <div class="photo-gallery" data-prefix="ccjf" aria-label="Fotos do Centro Cultural João Fona"></div>
-    </article>
-    <article class="place-section">
-      <h3 id="historia-centro-artesanato-tapajos">Centro de Artesanato do Tapajós – Cristo Rei</h3>
-      <p>Ótimo para comprar lembrancinhas e artesanatos regionais, além de possuir um mirante com vista para a confluência dos rios.</p>
-      <p>O espaço valoriza o trabalho de artesãos da região e reúne peças produzidas por comunidades indígenas, ribeirinhas e artistas locais.</p>
-      <h4>Principais atrações</h4>
-      <ul>
-        <li>Biojoias, esculturas em madeira, cerâmica e artesanato indígena.</li>
-        <li>Lembranças e produtos típicos da Amazônia.</li>
-      </ul>
-      <h4 id="fotos-centro-artesanato-tapajos">Fotos do Centro de Artesanato do Tapajós</h4>
-      <div class="photo-gallery" data-prefix="catcr" aria-label="Fotos do Centro de Artesanato do Tapajós — Cristo Rei"></div>
-    </article>
-    <article class="place-section">
-      <h3 id="historia-parque-cidade">Parque da Cidade</h3>
-      <p>Espaço verde com pistas de caminhada, ciclovia, playground, complexo esportivo e o Espaço Pet.</p>
-      <p>Um dos espaços públicos mais novos de Santarém, o parque promove lazer, esporte e integração com áreas verdes urbanas.</p>
-      <h4>Principais atrações</h4>
-      <ul>
-        <li>Trilhas, ciclovias, caminhadas e espaços esportivos.</li>
-        <li>Eventos culturais, áreas de lazer e contemplação da natureza.</li>
-      </ul>
-      <h4 id="fotos-parque-cidade">Fotos do Parque da Cidade</h4>
-      <div class="photo-gallery" data-prefix="pcs" aria-label="Fotos do Parque da Cidade de Santarém"></div>
-    </article>
-    <article class="place-section">
-      <h3 id="historia-praia-maracana">Praia do Maracanã</h3>
-      <p>Localizada a poucos minutos do centro, ideal para almoçar peixes regionais em quiosques à beira do rio.</p>
-      <p>Às margens do Tapajós, é uma das praias mais frequentadas por moradores e visitantes durante o verão amazônico.</p>
-      <h4>Principais atrações</h4>
-      <ul>
-        <li>Faixa de areia dourada, águas calmas e barracas de gastronomia regional.</li>
-        <li>Esportes náuticos, ambiente familiar e pôr do sol sobre o Tapajós.</li>
-      </ul>
-      <h4 id="fotos-praia-maracana">Fotos da Praia do Maracanã</h4>
-      <div class="photo-gallery" data-prefix="pm" aria-label="Fotos da Praia do Maracanã"></div>
+      <div class="photo-gallery" data-prefix="ccjf" data-count="20" aria-label="Fotos do Centro Cultural João Fona"></div>
     </article>
   </section>
 
@@ -1643,7 +1551,8 @@
       ? firstPhoto.querySelector("img").alt.replace(/,\s*foto \d+$/i, "")
       : galleryLabel.replace(/^(?:Fotos|Imagens) (?:de|do|da|dos|das) /i, "");
     const orderedPhotos = [];
-    for (let number = 1; number <= 40; number++) {
+    const photoCount = Number(gallery.dataset.count) || 40;
+    for (let number = 1; number <= photoCount; number++) {
       let photo = photosByNumber.get(number);
       if (!photo) {
         const path = `${prefix}${number}.png`;
@@ -1706,38 +1615,10 @@
   });
 
   document.querySelectorAll(".photo-gallery").forEach(gallery => {
-    const carousel = document.createElement("div");
-    carousel.className = "photo-carousel";
-    gallery.parentNode.insertBefore(carousel, gallery);
-    carousel.appendChild(gallery);
-
-    const previousPreview = document.createElement("button");
-    previousPreview.type = "button";
-    previousPreview.className = "photo-preview photo-preview-prev";
-    previousPreview.setAttribute("aria-label", "Selecionar foto anterior");
-    previousPreview.innerHTML = '<img alt="">';
-
-    const nextPreview = document.createElement("button");
-    nextPreview.type = "button";
-    nextPreview.className = "photo-preview photo-preview-next";
-    nextPreview.setAttribute("aria-label", "Selecionar próxima foto");
-    nextPreview.innerHTML = '<img alt="">';
-
-    const previous = document.createElement("button");
-    previous.type = "button";
-    previous.className = "photo-carousel-control photo-carousel-prev";
-    previous.setAttribute("aria-label", "Foto anterior nesta galeria");
-    previous.textContent = "‹";
-
-    const next = document.createElement("button");
-    next.type = "button";
-    next.className = "photo-carousel-control photo-carousel-next";
-    next.setAttribute("aria-label", "Próxima foto nesta galeria");
-    next.textContent = "›";
-
-    carousel.insertBefore(previousPreview, gallery);
-    carousel.insertBefore(nextPreview, gallery.nextSibling);
-    carousel.append(previous, next);
+    const mosaic = document.createElement("div");
+    mosaic.className = "photo-mosaic";
+    gallery.parentNode.insertBefore(mosaic, gallery);
+    mosaic.appendChild(gallery);
 
     const candidates = [...gallery.querySelectorAll(".photo-thumb")];
     const availablePhotos = [];
@@ -1749,48 +1630,17 @@
     let isPaused = false;
     let autoplay;
 
-    function renderCarousel() {
-      if (!availablePhotos.length || !activePhoto) {
-        previousPreview.hidden = true;
-        nextPreview.hidden = true;
-        previous.hidden = true;
-        next.hidden = true;
-        return;
-      }
-
-      const activeIndex = availablePhotos.indexOf(activePhoto);
-      const previousIndex = (activeIndex - 1 + availablePhotos.length) % availablePhotos.length;
-      const nextIndex = (activeIndex + 1) % availablePhotos.length;
-      availablePhotos.forEach((photo, photoIndex) => {
-        photo.classList.toggle("is-active", photoIndex === activeIndex);
-        photo.classList.toggle("is-prev", availablePhotos.length > 1 && photoIndex === previousIndex);
-        photo.classList.toggle("is-next", availablePhotos.length > 1 && photoIndex === nextIndex);
+    function renderFocus() {
+      availablePhotos.forEach(photo => {
+        photo.classList.toggle("is-focus", photo === activePhoto);
       });
-
-      const hasAlternatives = availablePhotos.length > 1;
-      previousPreview.hidden = !hasAlternatives;
-      nextPreview.hidden = !hasAlternatives;
-      previous.hidden = !hasAlternatives;
-      next.hidden = !hasAlternatives;
-      if (hasAlternatives) {
-        const previousPhoto = availablePhotos[previousIndex];
-        const nextPhoto = availablePhotos[nextIndex];
-        const previousImage = previousPreview.querySelector("img");
-        const nextImage = nextPreview.querySelector("img");
-        previousImage.src = previousPhoto.querySelector("img").src;
-        previousImage.alt = previousPhoto.querySelector("img").alt;
-        nextImage.src = nextPhoto.querySelector("img").src;
-        nextImage.alt = nextPhoto.querySelector("img").alt;
-        previousPreview.setAttribute("aria-label", `Selecionar foto anterior: ${previousPhoto.dataset.caption}`);
-        nextPreview.setAttribute("aria-label", `Selecionar próxima foto: ${nextPhoto.dataset.caption}`);
-      }
     }
 
     function movePhoto(direction) {
       if (availablePhotos.length < 2) return;
       const currentIndex = availablePhotos.indexOf(activePhoto);
       activePhoto = availablePhotos[(currentIndex + direction + availablePhotos.length) % availablePhotos.length];
-      renderCarousel();
+      renderFocus();
     }
 
     function finishCandidate(photo, image, exists) {
@@ -1807,16 +1657,26 @@
           photoButtons.push(photo);
           sortPhotoButtons(photoButtons);
         }
-        if (!activePhoto) activePhoto = availablePhotos[0];
+        if (!activePhoto || photoOrder.get(photo) < photoOrder.get(activePhoto)) {
+          activePhoto = availablePhotos[0];
+        }
       } else {
         photo.classList.add("photo-missing");
         photoButtons = photoButtons.filter(button => button !== photo);
         if (activePhoto === photo) activePhoto = availablePhotos[0] || null;
       }
 
-      renderCarousel();
+      renderFocus();
       if (resolvedCandidates === candidates.length && !availablePhotos.length) {
-        carousel.hidden = true;
+        if (gallery.dataset.count) {
+          const emptyMessage = document.createElement("p");
+          emptyMessage.className = "photo-empty";
+          const extension = gallery.dataset.extension ? `.${gallery.dataset.extension}` : "";
+          emptyMessage.textContent = `Fotos aguardando arquivos ${gallery.dataset.prefix}1${extension} a ${gallery.dataset.prefix}${gallery.dataset.count}${extension} na pasta img/.`;
+          mosaic.appendChild(emptyMessage);
+        } else {
+          mosaic.hidden = true;
+        }
         if (autoplay) window.clearInterval(autoplay);
         return;
       }
@@ -1827,13 +1687,15 @@
       const image = photo.querySelector("img");
       const originalSource = photo.dataset.photo;
       const imageStem = originalSource.replace(/\.[^.]+$/, "");
-      const sources = [...new Set([
-        originalSource,
-        `${imageStem}.png`,
-        `${imageStem}.jpg`,
-        `${imageStem}.jpeg`,
-        `${imageStem}.webp`
-      ])];
+      const sources = gallery.dataset.extension
+        ? [originalSource]
+        : [...new Set([
+          originalSource,
+          `${imageStem}.png`,
+          `${imageStem}.jpg`,
+          `${imageStem}.jpeg`,
+          `${imageStem}.webp`
+        ])];
       let sourceIndex = 0;
 
       const onLoad = () => {
@@ -1879,15 +1741,11 @@
       }
     }
 
-    previous.addEventListener("click", () => movePhoto(-1));
-    next.addEventListener("click", () => movePhoto(1));
-    previousPreview.addEventListener("click", () => movePhoto(-1));
-    nextPreview.addEventListener("click", () => movePhoto(1));
-    carousel.addEventListener("mouseenter", () => { isPaused = true; });
-    carousel.addEventListener("mouseleave", () => { isPaused = false; });
-    carousel.addEventListener("focusin", () => { isPaused = true; });
-    carousel.addEventListener("focusout", event => {
-      if (!carousel.contains(event.relatedTarget)) isPaused = false;
+    mosaic.addEventListener("mouseenter", () => { isPaused = true; });
+    mosaic.addEventListener("mouseleave", () => { isPaused = false; });
+    mosaic.addEventListener("focusin", () => { isPaused = true; });
+    mosaic.addEventListener("focusout", event => {
+      if (!mosaic.contains(event.relatedTarget)) isPaused = false;
     });
 
     if ("IntersectionObserver" in window) {
@@ -1896,7 +1754,7 @@
           isVisible = entry.isIntersecting;
         });
       }, { threshold: 0.35 });
-      observer.observe(carousel);
+      observer.observe(mosaic);
     } else {
       isVisible = true;
     }
@@ -1906,7 +1764,7 @@
           !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         movePhoto(1);
       }
-    }, 2400);
+    }, 2000);
     window.addEventListener("pagehide", () => window.clearInterval(autoplay), { once: true });
     queueImageChecks();
   });
